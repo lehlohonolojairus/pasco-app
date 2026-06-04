@@ -1,0 +1,106 @@
+<div
+  class="min-h-screen flex flex-col items-center px-4 bg-gradient-to-b from-[#4B1F75] to-[#6B2FA0]"
+>
+  <div class="w-full max-w-md">
+    <div class="flex justify-center mt-20 mb-4">
+      <img src="./pasco_logo.png" alt="Pasco logo" class="h-20 w-auto" />
+    </div>
+
+    <div class="bg-white w-full rounded-2xl mt-20 shadow-xl p-5">
+      <h2 class="text-2xl font-semibold text-[#6B2FA0] text-center mb-6">Welcome!</h2>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <!-- Error Banner -->
+        @if (errorMessage()) {
+          <div class="mb-4 px-3 py-2 bg-red-100 text-red-600 rounded-lg text-sm">
+            {{ errorMessage() }}
+          </div>
+        }
+
+        <!-- Email -->
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-1" for="email">Email</label>
+          <div
+            class="flex items-center border shadow-sm rounded-lg px-3 py-2"
+            [class.border-red-400]="emailControl.invalid && emailControl.touched"
+            [class.border-gray-300]="!(emailControl.invalid && emailControl.touched)"
+          >
+            <span class="pi pi-envelope pi-solid text-gray-400 mr-2"></span>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              placeholder="Enter your email"
+              class="w-full outline-none"
+              autocomplete="email"
+            />
+          </div>
+          @if (emailControl.invalid && emailControl.touched) {
+            <p class="text-red-500 text-xs mt-1">
+              @if (emailControl.hasError('required')) { Email is required. }
+              @else if (emailControl.hasError('email')) { Enter a valid email. }
+            </p>
+          }
+        </div>
+
+        <!-- Password -->
+        <div class="mb-4">
+          <label class="block text-gray-700 mb-1" for="password">Password</label>
+          <div
+            class="flex items-center border shadow-sm rounded-lg px-3 py-2"
+            [class.border-red-400]="passwordControl.invalid && passwordControl.touched"
+            [class.border-gray-300]="!(passwordControl.invalid && passwordControl.touched)"
+          >
+            <span class="pi pi-lock pi-solid text-gray-400 mr-2"></span>
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              placeholder="Enter your password"
+              class="w-full outline-none"
+              autocomplete="current-password"
+            />
+          </div>
+          @if (passwordControl.invalid && passwordControl.touched) {
+            <p class="text-red-500 text-xs mt-1">
+              @if (passwordControl.hasError('required')) { Password is required. }
+              @else if (passwordControl.hasError('minlength')) { Minimum 6 characters. }
+            </p>
+          }
+          <div class="text-right mt-1">
+            <a class="text-purple-600 text-sm cursor-pointer">Forgot Password?</a>
+          </div>
+        </div>
+
+        <!-- Google Login -->
+        <button
+          type="button"
+          class="w-full flex items-center justify-center border border-gray-300 shadow-sm rounded-lg py-2 mb-4 hover:bg-gray-50 transition cursor-pointer"
+        >
+          <img src="./google-logo-search-new-svgrepo-com.svg" class="w-5 h-5 mr-2" />
+          <span class="text-gray-700">Continue with Google</span>
+        </button>
+
+        <!-- Login Button -->
+        <button
+          type="submit"
+          [disabled]="isLoading()"
+          class="w-full bg-purple-600 text-white py-2 shadow-sm border border-purple-600 rounded-lg font-semibold hover:bg-purple-700 transition cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          @if (isLoading()) {
+            <span class="pi pi-spinner pi-spin mr-2"></span> Logging in...
+          } @else {
+            Login
+          }
+        </button>
+
+        <p class="text-center text-gray-600 mt-4">
+          Don't have an account?
+          <a class="text-purple-600 font-semibold cursor-pointer">Sign Up</a>
+        </p>
+
+      </form>
+    </div>
+  </div>
+</div>

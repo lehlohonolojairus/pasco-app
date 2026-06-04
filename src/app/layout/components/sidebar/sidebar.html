@@ -1,0 +1,73 @@
+<aside
+  class="min-h-screen w-72 bg-gradient-to-b to-[#683088] from-[#4B0082] text-white flex flex-col"
+>
+  <!-- Logo -->
+  <div class="p-0">
+    <img src="./pasco_logo.png" alt="PASCO" class="h-20 mt-5 m-auto object-contain" />
+  </div>
+
+  <!-- Navigation -->
+  <nav class="flex-1 px-4 py-6 space-y-2">
+    <a
+      class="flex items-center gap-3 px-4 py-3 rounded-xl bg-white text-purple-700 font-medium hover:cursor-pointer"
+    >
+      <i class="pi pi-home"></i>
+      Dashboard
+    </a>
+
+    <a
+      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+      routerLink="/messages"
+    >
+      <i class="pi pi-comments"></i>
+      Messages
+    </a>
+    <a
+      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+    >
+      <i class="pi pi-check"></i>
+      Attendance
+    </a>
+    <a
+      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+    >
+      <i class="pi pi-calendar"></i>
+      Timetable
+    </a>
+    <a
+      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+    >
+      <i class="pi pi-file"></i>
+      Report Cards
+    </a>
+    <a
+      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+    >
+      <i class="pi pi-pencil"></i>
+      Assignments / Homework
+    </a>
+    <a
+      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+    >
+      <i class="pi pi-credit-card"></i>
+      Payments
+    </a>
+
+    <a
+      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+    >
+      <i class="pi pi-image"></i>
+      Gallery
+    </a>
+
+    <a
+      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+    >
+      <i class="pi pi-cog"></i>
+      Settings
+    </a>
+  </nav>
+
+  <!-- User -->
+  <pasco-user-profile />
+</aside>

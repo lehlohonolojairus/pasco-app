@@ -1,0 +1,197 @@
+<div class="p-10 space-y-8">
+  <!-- Summary Cards -->
+  <section class="grid grid-cols-4 gap-6">
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-xl bg-orange-100 flex items-center justify-center">📢</div>
+
+        <div>
+          <p class="text-slate-500">Announcements</p>
+          <h3 class="text-2xl font-bold text-orange-600">2 New</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center">💬</div>
+
+        <div>
+          <p class="text-slate-500">Messages</p>
+          <h3 class="text-2xl font-bold text-purple-600">3 Unread</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center">✓</div>
+
+        <div>
+          <p class="text-slate-500">Assignments</p>
+          <h3 class="text-2xl font-bold text-green-600">4 Pending</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center">📅</div>
+
+        <div>
+          <p class="text-slate-500">Events</p>
+          <h3 class="text-2xl font-bold text-blue-600">2 Today</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Announcements + Messages -->
+  <section class="grid grid-cols-2 gap-6">
+    <!-- Announcements -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <div class="flex justify-between mb-6">
+        <h2 class="font-bold text-lg">Latest Announcements</h2>
+        <button class="text-purple-700">View All</button>
+      </div>
+
+      <div class="space-y-5">
+        <div class="border-b pb-4">
+          <h3 class="font-semibold">Parent-Teacher Conference</h3>
+          <p class="text-slate-500 text-sm mt-1">Conferences scheduled for next week.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold">School Sports Day</h3>
+          <p class="text-slate-500 text-sm mt-1">Annual sports day on June 5th.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Messages -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <div class="flex justify-between mb-6">
+        <h2 class="font-bold text-lg">Recent Messages</h2>
+        <button class="text-purple-700">View All</button>
+      </div>
+
+      <div class="space-y-5">
+        <div class="flex gap-4">
+          <img src="https://i.pravatar.cc/80?img=12" class="w-12 h-12 rounded-full" />
+
+          <div>
+            <h3 class="font-medium">Mr. Johnson</h3>
+            <p class="text-slate-500 text-sm">Regarding Emma's science project...</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <img src="https://i.pravatar.cc/80?img=32" class="w-12 h-12 rounded-full" />
+
+          <div>
+            <h3 class="font-medium">Mrs. Williams</h3>
+            <p class="text-slate-500 text-sm">Emma did a great job today.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Performance Widgets -->
+  <section class="grid grid-cols-3 gap-6">
+    <!-- Assignments -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="font-bold mb-4">Upcoming Assignments</h2>
+
+      <div class="space-y-4">
+        <div class="flex justify-between">
+          <span>Math Homework</span>
+          <span class="text-purple-600">Math</span>
+        </div>
+
+        <div class="flex justify-between">
+          <span>Science Project</span>
+          <span class="text-orange-600">Science</span>
+        </div>
+
+        <div class="flex justify-between">
+          <span>English Essay</span>
+          <span class="text-green-600">English</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="font-bold mb-6">Emma's Performance</h2>
+
+      <div class="text-center">
+        <div
+          class="mx-auto w-40 h-40 rounded-full border-[14px] border-purple-600 flex items-center justify-center"
+        >
+          <div>
+            <div class="text-4xl font-bold">88%</div>
+            <div class="text-sm text-slate-500">Overall</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Attendance -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="font-bold mb-6">Attendance Summary</h2>
+
+      <div
+        class="mx-auto w-40 h-40 rounded-full border-[14px] border-green-500 flex items-center justify-center"
+      >
+        <div>
+          <div class="text-4xl font-bold">95%</div>
+
+          <div class="text-sm text-slate-500">Present</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section class="grid grid-cols-4 gap-6">
+    <div class="col-span-3 bg-white rounded-2xl p-6 shadow-sm">
+      <h2 class="font-bold mb-6">Today's Schedule</h2>
+
+      <div class="grid grid-cols-5 gap-4">
+        <div>
+          <div class="text-sm text-slate-500">08:30</div>
+          <div class="font-semibold">Math</div>
+        </div>
+
+        <div>
+          <div class="text-sm text-slate-500">09:30</div>
+          <div class="font-semibold">Science</div>
+        </div>
+
+        <div>
+          <div class="text-sm text-slate-500">10:30</div>
+          <div class="font-semibold">English</div>
+        </div>
+
+        <div>
+          <div class="text-sm text-slate-500">11:30</div>
+          <div class="font-semibold">History</div>
+        </div>
+
+        <div>
+          <div class="text-sm text-slate-500">12:30</div>
+          <div class="font-semibold">Lunch</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-gradient-to-br from-purple-700 to-purple-900 text-white rounded-2xl p-6">
+      <h3 class="font-bold mb-4">Tip of the Day</h3>
+
+      <p class="text-sm text-purple-100">
+        Encourage your child to review their notes daily for better retention.
+      </p>
+    </div>
+  </section>
+</div>
