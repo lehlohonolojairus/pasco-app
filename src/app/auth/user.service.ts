@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 
 export interface TokenClaims {
   name: string;
+  email: string;
   role: string | string[];
   sub: string;
   exp: number;
@@ -27,6 +28,10 @@ export class UserService {
 
   getUserName(): string {
     return this.decodeToken()?.name ?? 'Unknown';
+  }
+
+  getUserEmail(): string {
+    return this.decodeToken()?.email ?? 'Unknown';
   }
 
   getRoles(): string {

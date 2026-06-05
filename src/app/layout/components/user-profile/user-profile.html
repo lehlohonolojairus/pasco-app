@@ -1,57 +1,59 @@
-<div class="p-4 user-profile-menu relative">
+<div class="p-l user-profile-menu relative">
   <div
-    class="bg-purple-800 rounded-2xl p-4 flex items-center gap-3 cursor-pointer hover:bg-purple-700 transition"
+    class="bg-[#09050E]/20 rounded-card p-m flex items-center gap-m cursor-pointer hover:bg-white/20 transition-colors duration-200"
     (click)="toggleMenu()"
   >
-    <img src="https://i.pravatar.cc/100" class="w-12 h-12 rounded-full object-cover" />
+    <div class="avatar-xl shrink-0">
+      {{ userName() | slice:0:2 | uppercase }}
+    </div>
     <div class="flex-1 min-w-0">
-      <p class="font-semibold text-white truncate">{{ userName() }}</p>
-      <p class="text-sm text-purple-200 truncate">{{ userRole() }}</p>
+      <p class="text-body-sm font-semibold text-white truncate">{{ userName() }}</p>
+      <p class="text-caption text-accent-mint truncate">{{ userRole() }}</p>
     </div>
     <span
-      class="pi pi-chevron-down text-purple-200 text-xs transition-transform duration-200"
+      class="pi pi-chevron-down text-white/60 text-xs transition-transform duration-200"
       [class.rotate-180]="menuOpen()"
     ></span>
   </div>
 
   @if (menuOpen()) {
     <div
-      class="absolute left-4 right-4 bottom-full mb-2 bg-purple-50 rounded-xl shadow-lg overflow-hidden z-50 border border-gray-100"
+      class="absolute left-l right-l bottom-full mb-s bg-white rounded-card shadow-modal overflow-hidden z-50 border border-neutral-300"
     >
-      <ul class="py-1 text-gray-700 text-sm">
+      <ul class="py-xs text-body-sm">
         <li>
           <button
             (click)="changePassword()"
-            class="w-full flex items-center gap-3 px-4 py-3 bg-purple-100 hover:bg-purple-300 transition hover:cursor-pointer"
+            class="w-full flex items-center gap-m px-l py-m text-neutral-700 hover:bg-neutral-100 transition-colors cursor-pointer"
           >
-            <span class="pi pi-lock text-purple-600"></span>
+            <span class="pi pi-lock text-primary-indigo"></span>
             Change Password
           </button>
         </li>
         <li>
           <button
             (click)="uploadProfilePicture()"
-            class="w-full flex items-center gap-3 px-4 py-3 bg-purple-100 hover:bg-purple-300 transition hover:cursor-pointer"
+            class="w-full flex items-center gap-m px-l py-m text-neutral-700 hover:bg-neutral-100 transition-colors cursor-pointer"
           >
-            <span class="pi pi-image text-purple-600"></span>
+            <span class="pi pi-image text-primary-indigo"></span>
             Upload Profile Picture
           </button>
         </li>
         <li>
-          <button
+          <a routerLink="/layout/user/schools"
             (click)="linkSchool()"
-            class="w-full flex items-center gap-3 px-4 py-3 bg-purple-100 hover:bg-purple-300 transition hover:cursor-pointer"
+            class="w-full flex items-center gap-m px-l py-m text-neutral-700 hover:bg-neutral-100 transition-colors cursor-pointer"
           >
-            <span class="pi pi-building text-purple-600"></span>
-            Link School
-          </button>
+            <span class="pi pi-building text-primary-indigo"></span>
+            Schools
+        </a>
         </li>
-        <li class="border-t border-purple-100">
+        <li class="border-t border-neutral-300">
           <button
             (click)="logout()"
-            class="w-full flex items-center gap-3 px-4 py-3 bg-purple-100 hover:bg-red-100 text-red-500 transition hover:cursor-pointer"
+            class="w-full flex items-center gap-m px-l py-m text-status-error hover:bg-[#FFEBEE] transition-colors cursor-pointer"
           >
-            <span class="pi pi-sign-out text-red-500"></span>
+            <span class="pi pi-sign-out text-status-error"></span>
             Logout
           </button>
         </li>

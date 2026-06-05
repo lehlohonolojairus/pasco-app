@@ -1,73 +1,91 @@
 <aside
-  class="min-h-screen w-72 bg-gradient-to-b to-[#683088] from-[#4B0082] text-white flex flex-col"
+  class="min-h-screen w-72 bg-pasco-purple text-white flex flex-col"
 >
   <!-- Logo -->
-  <div class="p-0">
-    <img src="./pasco_logo.png" alt="PASCO" class="h-20 mt-5 m-auto object-contain" />
+  <div class="px-xl pt-xl pb-l flex justify-center">
+    <img src="./pasco_logo.png" alt="PASCO" class="h-20 object-contain" />
   </div>
 
+  <hr class="border-white/10 mx-l" />
+
   <!-- Navigation -->
-  <nav class="flex-1 px-4 py-6 space-y-2">
+  <nav class="flex-1 px-l py-xl space-y-s">
     <a
-      class="flex items-center gap-3 px-4 py-3 rounded-xl bg-white text-purple-700 font-medium hover:cursor-pointer"
+      routerLink="/layout/dashboard"
+      routerLinkActive="nav-item-active"
+      class="nav-item"
     >
       <i class="pi pi-home"></i>
       Dashboard
     </a>
-
     <a
-      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
-      routerLink="/messages"
+      routerLink="/layout/messages"
+      routerLinkActive="nav-item-active"
+      class="nav-item"
     >
       <i class="pi pi-comments"></i>
       Messages
     </a>
     <a
-      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+      routerLink="/layout/attendance"
+      routerLinkActive="nav-item-active"
+      class="nav-item"
     >
-      <i class="pi pi-check"></i>
+      <i class="pi pi-check-circle"></i>
       Attendance
     </a>
     <a
-      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+      routerLink="/layout/timetable"
+      routerLinkActive="nav-item-active"
+      class="nav-item"
     >
       <i class="pi pi-calendar"></i>
       Timetable
     </a>
     <a
-      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+      routerLink="/layout/report-cards"
+      routerLinkActive="nav-item-active"
+      class="nav-item"
     >
       <i class="pi pi-file"></i>
       Report Cards
     </a>
     <a
-      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+      routerLink="/layout/assignments"
+      routerLinkActive="nav-item-active"
+      class="nav-item"
     >
       <i class="pi pi-pencil"></i>
       Assignments / Homework
     </a>
     <a
-      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+      routerLink="/layout/payments"
+      routerLinkActive="nav-item-active"
+      class="nav-item"
     >
       <i class="pi pi-credit-card"></i>
       Payments
     </a>
-
     <a
-      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+      routerLink="/layout/gallery"
+      routerLinkActive="nav-item-active"
+      class="nav-item"
     >
       <i class="pi pi-image"></i>
       Gallery
     </a>
-
     <a
-      class="flex items-center gap-3 text-[#DFD4E7] px-4 py-3 rounded-xl hover:bg-purple-800 hover:cursor-pointer"
+      routerLink="/layout/settings"
+      routerLinkActive="nav-item-active"
+      class="nav-item"
     >
       <i class="pi pi-cog"></i>
       Settings
     </a>
   </nav>
 
-  <!-- User -->
+  <hr class="border-white/10 mx-l" />
+
+  <!-- User Profile -->
   <pasco-user-profile />
 </aside>

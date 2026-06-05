@@ -1,7 +1,9 @@
-import { Component, OnInit, signal, HostListener } from '@angular/core';
+import { Component, OnInit, signal, HostListener, inject } from '@angular/core';
 import { UserService } from '../../../auth/user.service';
 import { AuthService } from '../../../auth/auth.service';
 import { Router } from '@angular/router';
+import { ModalDialogService } from '../modal-dialog/modal-dialog.service';
+import { ChangePasswordComponent } from '../change-password/change-password.component';
 
 @Component({
   selector: 'pasco-user-profile',
@@ -10,6 +12,8 @@ import { Router } from '@angular/router';
   standalone: false,
 })
 export class UserProfile implements OnInit {
+  private modalService = inject(ModalDialogService);
+
   userName = signal('');
   userRole = signal('');
   menuOpen = signal(false);
@@ -39,7 +43,12 @@ export class UserProfile implements OnInit {
 
   changePassword() {
     this.menuOpen.set(false);
-    this.router.navigate(['/change-password']);
+    this.modalService.open({
+      title: 'Change Password',
+      icon: 'pi-lock',
+      component: ChangePasswordComponent,
+      onSave: (event) => {},
+    });
   }
 
   uploadProfilePicture() {

@@ -1,45 +1,38 @@
-<header class="border-b border-gray-200 py-6">
-  <div class="flex items-center justify-between">
-    <div>
-      <h1 class="text-4xl font-bold text-[#4C0382]">
-        {{ appStateService.pageTitle() }}
-      </h1>
+<header class="ml-5 mr-5 border-b border-gray-300 h-16 px-xl flex items-center justify-between">
+  <h1 class="text-h2 text-pasco-purple font-semibold">
+    {{ appStateService.pageTitle() }}
+  </h1>
+
+  <div class="flex items-center gap-l">
+    <!-- Notifications -->
+    <button class="relative btn-ghost px-m py-m border-0 ">
+      <i class="pi pi-bell text-neutral-700"></i>
+      <span class="absolute top-1 right-1 w-2 h-2 bg-status-error rounded-full"></span>
+    </button>
+
+    <!-- Quick Actions -->
+    <div class="flex items-center rounded-btn overflow-hidden shadow-fab">
+      <button class="bg-primary-indigo hover:bg-primary-indigo-dark transition-colors text-white text-body-sm font-medium px-l py-m cursor-pointer">
+        Quick Actions
+      </button>
+      <div class="w-px h-full bg-white/20"></div>
+      <button
+        (click)="toggleMenu()"
+        class="bg-primary-indigo hover:bg-primary-indigo-dark transition-colors text-white px-m py-m cursor-pointer"
+      >
+        <span
+          class="pi pi-chevron-down text-xs transition-transform duration-200"
+          [class.rotate-180]="isOpen"
+        ></span>
+      </button>
     </div>
 
-    <div class="flex items-center gap-6">
-      <div class="relative inline-block text-left" (click)="toggleMenu()">
-        <!-- Button -->
-        <button
-          class="flex items-center px-4 py-2 bg-purple-800 text-white rounded hover:bg-purple-900"
-        >
-          <span>Options</span>
-          <!-- Chevron Icon -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-4 h-4 ml-2 transform transition-transform duration-200"
-            [ngClass]="{ 'rotate-180': isOpen }"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </button>
-
-        <!-- Dropdown Menu -->
-        @if (isOpen) {
-          <div class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded shadow-lg">
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Settings</a>
-            <a href="#" class="block px-4 py-2 hover:bg-gray-100">Logout</a>
-          </div>
-        }
+    <!-- Dropdown -->
+    @if (isOpen) {
+      <div class="absolute right-6 top-14 mt-s w-48 bg-white border border-neutral-300 rounded-card shadow-modal z-50">
+        <a class="block px-l py-m text-body-sm text-neutral-700 hover:bg-neutral-100 cursor-pointer">Profile</a>
+        <a class="block px-l py-m text-body-sm text-neutral-700 hover:bg-neutral-100 cursor-pointer">Settings</a>
       </div>
-    </div>
+    }
   </div>
 </header>
