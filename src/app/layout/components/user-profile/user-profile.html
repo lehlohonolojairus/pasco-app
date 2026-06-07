@@ -4,8 +4,13 @@
     (click)="toggleMenu()"
   >
     <div class="avatar-xl shrink-0">
-      @if (isValidUrl(profilePictureUrl())) {
-        <img [src]="profilePictureUrl()" alt="Profile Picture" class="w-full h-full object-cover rounded-full" />
+      @if (hasProfilePicture()) {
+        <img
+          [src]="userService.profilePictureUrl()"
+          alt="Profile Picture"
+          class="w-full h-full object-cover rounded-full"
+          (error)="onProfileImageError()"
+        />
       } @else {
         {{ userName() | slice:0:2 | uppercase }}
       }
@@ -44,13 +49,14 @@
           </button>
         </li>
         <li>
-          <a routerLink="/layout/user/schools"
+          <a
+            routerLink="/layout/user/schools"
             (click)="linkSchool()"
             class="w-full flex items-center gap-m px-l py-m text-neutral-700 hover:bg-neutral-100 transition-colors cursor-pointer"
           >
             <span class="pi pi-building text-primary-indigo"></span>
             Schools
-        </a>
+          </a>
         </li>
         <li class="border-t border-neutral-300">
           <button

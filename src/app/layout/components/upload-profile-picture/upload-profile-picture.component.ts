@@ -5,6 +5,7 @@ import { ModalDialogService } from '../modal-dialog/modal-dialog.service';
 import { Config } from '../../../config';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../../auth/auth.service';
 
 @Component({
   selector: 'pasco-upload-profile-picture',
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class UploadProfilePictureComponent {
   private http = inject(HttpClient);
   private userService = inject(UserService);
+  private authService = inject(AuthService);
   private modalService = inject(ModalDialogService);
 
   selectedFile = signal<File | null>(null);
@@ -77,12 +79,38 @@ export class UploadProfilePictureComponent {
         this.isUploading.set(false);
         this.successMessage.set('Profile picture uploaded successfully.');
         this.selectedFile.set(null);
-        this.userService.profilePictureUrl.set(response.data!);
+
+        const uploadedUrl = response?.data;
+        if (uploadedUrl) {
+          this.userService.profilePictureUrl.set(this.withCacheBuster(uploadedUrl));
+        }
+
+        this.updateAuthToken(uploadedUrl);
       },
       error: (err) => {
         this.isUploading.set(false);
         this.errorMessage.set(err?.error?.message ?? 'Upload failed. Please try again.');
       },
     });
+  }
+
+  updateAuthToken = (uploadedUrl?: string) => {
+    this.http.get(Config.users.newToken).subscribe({
+      next: (res: any) => {
+        if (res.isSuccess) {
+          this.authService.setToken(res.data!);
+        }
+
+        if (uploadedUrl) {
+          this.userService.profilePictureUrl.set(this.withCacheBuster(uploadedUrl));
+        }
+      },
+      error: () => {},
+    });
+  };
+
+  private withCacheBuster(url: string): string {
+    const separator = url.includes('?') ? '&' : '?';
+    return `${url}${separator}t=${Date.now()}`;
   }
 }

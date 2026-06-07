@@ -4,5 +4,6 @@ export const Config = {
         login: "https://localhost:7195/api/users/login",
         changePassword: "https://localhost:7195/api/users/change-password",
         uploadProfilePicture: "https://localhost:7195/api/users/upload-profile-picture",
+        newToken: "https://localhost:7195/api/users/new-token",
     }
 }
