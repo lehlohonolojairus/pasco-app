@@ -3,6 +3,8 @@ import { Injectable, signal, Type } from '@angular/core';
 export interface ModalConfig {
   title: string;
   icon?: string;
+  hideSaveButton?: boolean;
+  cancelButtonText?: string;
   component: Type<any>;
   onSave: (event: any) => void;
 }

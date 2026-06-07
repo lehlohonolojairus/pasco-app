@@ -4,7 +4,11 @@
     (click)="toggleMenu()"
   >
     <div class="avatar-xl shrink-0">
-      {{ userName() | slice:0:2 | uppercase }}
+      @if (isValidUrl(profilePictureUrl())) {
+        <img [src]="profilePictureUrl()" alt="Profile Picture" class="w-full h-full object-cover rounded-full" />
+      } @else {
+        {{ userName() | slice:0:2 | uppercase }}
+      }
     </div>
     <div class="flex-1 min-w-0">
       <p class="text-body-sm font-semibold text-white truncate">{{ userName() }}</p>

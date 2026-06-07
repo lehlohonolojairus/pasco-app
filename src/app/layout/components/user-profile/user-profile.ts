@@ -1,9 +1,10 @@
-import { Component, OnInit, signal, HostListener, inject } from '@angular/core';
+import { Component, OnInit, signal, HostListener, inject, effect } from '@angular/core';
 import { UserService } from '../../../auth/user.service';
 import { AuthService } from '../../../auth/auth.service';
 import { Router } from '@angular/router';
 import { ModalDialogService } from '../modal-dialog/modal-dialog.service';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { UploadProfilePictureComponent } from '../upload-profile-picture/upload-profile-picture.component';
 
 @Component({
   selector: 'pasco-user-profile',
@@ -14,6 +15,7 @@ import { ChangePasswordComponent } from '../change-password/change-password.comp
 export class UserProfile implements OnInit {
   private modalService = inject(ModalDialogService);
 
+  profilePictureUrl = signal<string | null>(null);
   userName = signal('');
   userRole = signal('');
   menuOpen = signal(false);
@@ -21,12 +23,20 @@ export class UserProfile implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private router: Router
-  ) {}
+    private router: Router,
+  ) {
+    effect(() => {
+      const profilePicture = this.userService.profilePictureUrl();
+      if (profilePicture) {
+        this.profilePictureUrl.set(profilePicture);
+      }
+    });
+  }
 
   ngOnInit() {
     this.userName.set(this.userService.getUserName());
     this.userRole.set(this.userService.getRoles());
+    this.profilePictureUrl.set(this.userService.getProfilePicture());
   }
 
   toggleMenu() {
@@ -53,7 +63,14 @@ export class UserProfile implements OnInit {
 
   uploadProfilePicture() {
     this.menuOpen.set(false);
-    // TODO: open file picker / dialog
+    this.modalService.open({
+      title: 'Upload Profile Picture',
+      icon: 'pi-image',
+      hideSaveButton: true,
+      cancelButtonText: 'Close',
+      component: UploadProfilePictureComponent,
+      onSave: (event) => {},
+    });
   }
 
   linkSchool() {
@@ -64,5 +81,14 @@ export class UserProfile implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  }
+  isValidUrl(value: string | null): boolean {
+    if (!value) return false;
+    try {
+      const url = new URL(value);
+      return url.protocol === 'http:' || url.protocol === 'https:';
+    } catch {
+      return false;
+    }
   }
 }

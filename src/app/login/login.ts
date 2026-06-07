@@ -35,6 +35,7 @@ export class Login {
     this.authService.login({ userName: email!, password: password! }).subscribe({
       next: (res) => {
         if (res.isSuccess) {
+          this.authService.setToken(res.data!);
           this.router.navigate(['/layout']);
         } else {
           this.errorMessage.set(res.message ?? 'Login failed.');

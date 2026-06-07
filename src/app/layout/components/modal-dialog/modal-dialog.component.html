@@ -1,18 +1,18 @@
 @if (modalService.isOpen()) {
   <div class="fixed inset-0 z-50 flex items-center justify-center">
     <!-- Backdrop -->
-    <div
-      class="absolute inset-0 bg-black/50 backdrop-blur-sm"
-      (click)="handleCancel()"
-    ></div>
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" (click)="handleCancel()"></div>
 
     <!-- Modal -->
-    <div class="relative bg-white rounded-card shadow-modal w-full max-w-md mx-m overflow-hidden border border-neutral-300">
-
+    <div
+      class="relative bg-white rounded-card shadow-modal w-full max-w-md mx-m overflow-hidden border border-neutral-300"
+    >
       <!-- Header -->
       <div class="flex items-center gap-m px-l py-m border-b border-neutral-200 bg-neutral-50">
         @if (modalService.config()?.icon) {
-          <span [class]="'pi ' + modalService.config()!.icon + ' text-primary-indigo text-lg'"></span>
+          <span
+            [class]="'pi ' + modalService.config()!.icon + ' text-primary-indigo text-lg'"
+          ></span>
         }
         <h2 class="text-body-sm font-semibold text-neutral-800 flex-1">
           {{ modalService.config()?.title }}
@@ -31,26 +31,30 @@
       </div>
 
       <!-- Footer -->
-      <div class="flex justify-end items-center gap-m px-l py-m border-t border-neutral-200 bg-neutral-50">
+      <div
+        class="flex justify-end items-center gap-m px-l py-m border-t border-neutral-200 bg-neutral-50"
+      >
         <button
           type="button"
           (click)="handleCancel()"
           class="px-l py-s text-body-sm font-medium text-neutral-700 bg-white border border-neutral-300 rounded-card hover:bg-neutral-100 transition-colors cursor-pointer"
           [disabled]="isLoading"
         >
-          Cancel
+          {{ modalService.config()?.cancelButtonText || 'Cancel' }}
         </button>
-        <button
-          type="button"
-          (click)="handleSave($event)"
-          class="px-l py-s text-body-sm font-medium text-white bg-primary-indigo rounded-card hover:bg-primary-indigo/90 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-          [disabled]="isLoading || !modalService.isFormValid()"
-        >
-          @if (isLoading) {
-            <span class="pi pi-spin pi-spinner mr-xs"></span>
-          }
-          Save
-        </button>
+        @if (!modalService.config()?.hideSaveButton) {
+          <button
+            type="button"
+            (click)="handleSave($event)"
+            class="px-l py-s text-body-sm font-medium text-white bg-primary-indigo rounded-card hover:bg-primary-indigo/90 transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            [disabled]="isLoading || !modalService.isFormValid()"
+          >
+            @if (isLoading) {
+              <span class="pi pi-spin pi-spinner mr-xs"></span>
+            }
+            Save
+          </button>
+        }
       </div>
     </div>
   </div>

@@ -9,22 +9,25 @@ export interface LoginPayload {
   password: string;
 }
 
-const TOKEN_KEY = 'pasco_access_token';
+const TOKEN_KEY = 'auth_token';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   constructor(private http: HttpClient) {}
-
+  
   login(payload: LoginPayload): Observable<ApiResponse<string>> {
     return this.http
-      .post<ApiResponse<string>>(Config.users.login, payload)
-      .pipe(
-        tap((res) => {
+    .post<ApiResponse<string>>(Config.users.login, payload)
+    .pipe(
+      tap((res) => {
           if (res.isSuccess && res.data) {
-            localStorage.setItem(TOKEN_KEY, res.data);
+            this.setToken(res.data);
           }
         })
       );
+  }
+  setToken(token: string) {
+    localStorage.setItem(TOKEN_KEY, token);
   }
 
   getToken(): string | null {
