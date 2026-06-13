@@ -1,8 +1,8 @@
-<div class="flex min-h-screen bg-[#F1F0F3]">
+<div class="flex min-h-screen bg-[#F1F0F3] overflow-hidden">
   <pasco-sidebar />
-  <div class="flex flex-col flex-1">
+  <div class="flex flex-col flex-1 overflow-y-hidden" >
     <pasco-header />
-    <main class="flex-1 overflow-y-auto p-xl overflow-hidden">
+    <main class="flex-1 p-xl overflow-y-scroll">
       <router-outlet />
     </main>
   </div>

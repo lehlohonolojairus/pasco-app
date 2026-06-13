@@ -9,7 +9,9 @@ import { Header } from './components/header/header';
 import { UserProfile } from './components/user-profile/user-profile';
 import { ModalDialogComponent } from './components/modal-dialog/modal-dialog.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
-
+import { TableModule } from 'primeng/table';
+import { PrimeNG, providePrimeNG } from 'primeng/config';
+import Aura from '@primeuix/themes/aura';
 @NgModule({
   declarations: [Layout, Sidebar, Header, UserProfile, ModalDialogComponent],
   imports: [
@@ -17,6 +19,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
     ReactiveFormsModule,
     HttpClientModule,
     ChangePasswordComponent,
+    TableModule,
     RouterModule.forChild([
       {
         path: '',
@@ -27,9 +30,26 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
             loadChildren: () =>
               import('./dashboard/dashboard-module').then((m) => m.DashboardModule),
           },
+          {
+            path: 'schools',
+            loadChildren: () => import('./schools/schools-module').then((m) => m.SchoolsModule),
+          },
         ],
       },
     ]),
   ],
+  providers: [
+    providePrimeNG({
+      theme: {
+        preset: 'aura',
+      },
+    }),
+  ],
 })
-export class LayoutModule {}
+export class LayoutModule {
+  constructor(private primeng: PrimeNG) {
+    this.primeng.theme.set({
+      preset: Aura,
+    });
+  }
+}

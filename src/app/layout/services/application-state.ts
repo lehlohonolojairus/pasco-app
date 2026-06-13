@@ -4,5 +4,5 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class ApplicationState {
-  pageTitle = signal<string>('Dashboard');
+  public pageTitle = signal<string>('Dashboard');
 }

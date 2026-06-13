@@ -1,0 +1,73 @@
+.school-logo {
+  width: 64px;
+  border-radius: 6px;
+  display: block;
+}
+
+:host ::ng-deep .pasco-table {
+  .p-datatable-header {
+    background: #fff;
+    color: var(--color-neutral-900);
+    border: 1px solid var(--color-neutral-300);
+    border-bottom: 0;
+  }
+
+  .p-datatable-table-container {
+    background: #fff;
+  }
+
+  .p-datatable-thead > tr > th {
+    background: #fff;
+    color: var(--color-neutral-900);
+    border-color: var(--color-neutral-300);
+    font-weight: 600;
+  }
+
+  .p-datatable-tbody > tr > td {
+    background: #fff;
+    color: var(--color-neutral-900);
+    border-color: var(--color-neutral-300);
+  }
+
+  .p-datatable-tbody > tr:nth-child(even) > td {
+    background: #f7f4fc;
+  }
+
+  .p-datatable-tbody > tr:hover > td {
+    background: #efe8fb;
+  }
+
+  .p-sortable-column.p-highlight,
+  .p-sortable-column.p-highlight .p-sortable-column-icon {
+    color: var(--color-pasco-purple);
+  }
+
+  .p-column-filter-menu-button:hover,
+  .p-column-filter-menu-button.p-column-filter-menu-button-open {
+    background: #efe8fb;
+    color: var(--color-pasco-purple);
+  }
+
+  .p-paginator {
+    background: #fff;
+    color: var(--color-neutral-700);
+    border: 1px solid var(--color-neutral-300);
+    border-top: 0;
+  }
+
+  .p-paginator .p-paginator-page.p-highlight {
+    background: var(--color-pasco-purple);
+    border-color: var(--color-pasco-purple);
+    color: #fff;
+  }
+
+  .p-inputtext:enabled:focus,
+  .p-focus {
+    box-shadow: 0 0 0 1px var(--color-pasco-purple);
+    border-color: var(--color-pasco-purple);
+  }
+
+  a {
+    color: var(--color-pasco-purple);
+  }
+}
