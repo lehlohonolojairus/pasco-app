@@ -1,11 +1,17 @@
-import { ChangeDetectorRef, Component, inject, OnInit, OnDestroy } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { ChangeDetectorRef, Component, inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  AbstractControl,
+  FormBuilder,
+  ReactiveFormsModule,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { UserService } from '../../../auth/user.service';
 import { Config } from '../../../config';
 import { ModalDialogService } from '../modal-dialog/modal-dialog.service';
-import { UserService } from '../../../auth/user.service';
 
 function passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
   const newPassword = control.get('newPassword')?.value;
@@ -40,17 +46,23 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
       newPassword: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]],
     },
-    { validators: passwordMatchValidator }
+    { validators: passwordMatchValidator },
   );
 
-  get currentPassword() { return this.form.get('currentPassword'); }
-  get newPassword() { return this.form.get('newPassword'); }
-  get confirmPassword() { return this.form.get('confirmPassword'); }
+  get currentPassword() {
+    return this.form.get('currentPassword');
+  }
+  get newPassword() {
+    return this.form.get('newPassword');
+  }
+  get confirmPassword() {
+    return this.form.get('confirmPassword');
+  }
 
   ngOnInit(): void {
     this.modalService.setFormValid(false);
 
-    this.statusSub = this.form.statusChanges.subscribe(status => {
+    this.statusSub = this.form.statusChanges.subscribe((status) => {
       this.modalService.setFormValid(status === 'VALID');
     });
   }
@@ -75,7 +87,7 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
       newPassword: this.form.value.newPassword,
       confirmPassword: this.form.value.confirmPassword,
       appName: 'PasCo_WebPortal',
-      userName: this.userService.getUserEmail()
+      userName: this.userService.getUserEmail(),
     };
 
     this.http.post(Config.users.changePassword, payload).subscribe({

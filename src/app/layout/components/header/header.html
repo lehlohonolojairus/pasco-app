@@ -5,14 +5,16 @@
 
   <div class="flex items-center gap-l">
     <!-- Notifications -->
-    <button class="relative btn-ghost px-m py-m border-0 ">
+    <button class="relative btn-ghost px-m py-m border-0">
       <i class="pi pi-bell text-neutral-700"></i>
       <span class="absolute top-1 right-1 w-2 h-2 bg-status-error rounded-full"></span>
     </button>
 
     <!-- Quick Actions -->
     <div class="flex items-center rounded-btn overflow-hidden shadow-fab">
-      <button class="bg-primary-indigo hover:bg-primary-indigo-dark transition-colors text-white text-body-sm font-medium px-l py-m cursor-pointer">
+      <button
+        class="bg-primary-indigo hover:bg-primary-indigo-dark transition-colors text-white text-body-sm font-medium px-l py-m cursor-pointer"
+      >
         Quick Actions
       </button>
       <div class="w-px h-full bg-white/20"></div>
@@ -29,9 +31,15 @@
 
     <!-- Dropdown -->
     @if (isOpen) {
-      <div class="absolute right-6 top-14 mt-s w-48 bg-white border border-neutral-300 rounded-card shadow-modal z-50">
-        <a class="block px-l py-m text-body-sm text-neutral-700 hover:bg-neutral-100 cursor-pointer">Profile</a>
-        <a class="block px-l py-m text-body-sm text-neutral-700 hover:bg-neutral-100 cursor-pointer">Settings</a>
+      <div
+        class="absolute right-6 top-14 mt-s w-48 bg-white border border-neutral-300 rounded-card shadow-modal z-50"
+      >
+        <a class="block px-l py-m text-body-sm text-neutral-700 hover:bg-neutral-100 cursor-pointer"
+          >Profile</a
+        >
+        <a class="block px-l py-m text-body-sm text-neutral-700 hover:bg-neutral-100 cursor-pointer"
+          >Settings</a
+        >
       </div>
     }
   </div>

@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "prettier": "prettier --write \"src/**/*.{ts,html,scss}\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -35,7 +36,7 @@
     "autoprefixer": "^10.5.0",
     "jsdom": "^28.0.0",
     "postcss": "^8.5.15",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.4",
     "tailwindcss": "^4.3.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"

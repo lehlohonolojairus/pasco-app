@@ -12,7 +12,6 @@ export interface TokenClaims {
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  
   profilePictureUrl = signal<string | null>(null);
 
   constructor(private authService: AuthService) {}

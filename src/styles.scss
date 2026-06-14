@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'tailwindcss';
 @use 'primeicons/primeicons.css';
+@use 'primeflex/themes/primeone-light.css';
 
 @theme {
   /* Fonts */
@@ -26,6 +27,7 @@
   --color-status-warning: #ffca28;
   --color-status-error: #e53935;
   --color-status-info: #1e88e5;
+  --color-table-heading: #e3f2fd;
 
   /* Spacing */
   --spacing-xs: 4px;
@@ -67,7 +69,9 @@
 
     /* Colors */
     --color-pasco-purple: #5a2f91;
+    --color-pasco-orange-dark: #e67e22;
     --color-pasco-orange: #f39a2e;
+    --color-pasco-orange-light: #fffcf8;
     --color-primary-indigo: #3f51b5;
     --color-primary-indigo-dark: #303f9f;
     --color-accent-mint: #3ec9a7;
@@ -430,280 +434,113 @@
 .pi-solid {
   -webkit-text-stroke: 0.5px currentColor;
 }
-/* filepath: d:\Work\PasCo\pasco-app\src\styles.scss */
-/* ...existing code... */
 
 /* PASCO PrimeNG Theme - single source of truth */
-.p-component {
-  font-family: Inter, sans-serif;
-}
-
-.p-focus {
-  box-shadow: 0 0 0 2px rgba(76, 45, 145, 0.15) !important;
-}
-
-.p-inputtext:enabled:hover,
-.p-select:hover {
-  border-color: var(--color-primary-indigo) !important;
-}
-
-.p-inputtext:enabled:focus,
-.p-select.p-focus {
-  border-color: var(--color-primary-indigo) !important;
-  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.15) !important;
-}
-
-/* Shared PASCO primary button */
-.pasco-primary-btn,
-.p-button.pasco-primary-btn,
-.p-button.p-button-primary {
-  background: var(--color-primary-indigo) !important;
-  border: 1px solid var(--color-primary-indigo) !important;
-  color: #fff !important;
-  border-radius: 0.5rem !important;
-  box-shadow: none !important;
-}
-
-.pasco-primary-btn:hover,
-.p-button.pasco-primary-btn:hover,
-.p-button.p-button-primary:hover {
-  background: var(--color-primary-indigo-dark) !important;
-  border-color: var(--color-primary-indigo-dark) !important;
-  color: #fff !important;
-}
-
-.pasco-primary-btn:focus-visible,
-.p-button.pasco-primary-btn:focus-visible,
-.p-button.p-button-primary:focus-visible {
-  box-shadow: 0 0 0 3px rgba(63, 81, 181, 0.18) !important;
-}
-
-/* Table shell */
-.p-datatable.pasco-table {
-  border: 1px solid var(--color-neutral-300);
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  background: #fff;
-}
-
-.p-datatable.pasco-table .p-datatable-header {
-  background: #fff;
-  border-bottom: 1px solid var(--color-neutral-300);
-  padding: 1rem 1.25rem;
-}
-
-.p-datatable.pasco-table .p-datatable-thead > tr > th {
-  background: #f7f2ff !important;
-  color: var(--color-pasco-purple) !important;
-  border-color: var(--color-neutral-300) !important;
-  border-bottom: 1px solid var(--color-neutral-300) !important;
-  font-weight: 600;
-  padding: 0.95rem 1rem;
-}
-
-.p-datatable.pasco-table .p-datatable-thead > tr > th:hover,
-.p-datatable.pasco-table .p-datatable-thead > tr > th.p-sortable-column:hover {
-  background: #efe7ff !important;
-  color: var(--color-pasco-purple) !important;
-}
-
-.p-datatable.pasco-table .p-datatable-tbody > tr > td {
-  background: #fff;
-  color: var(--color-neutral-900);
-  border-color: var(--color-neutral-300);
-  padding: 0.95rem 1rem;
-}
-
-.p-datatable.pasco-table.p-datatable-striped .p-datatable-tbody > tr:nth-child(even) > td {
-  background: var(--color-neutral-100);
-}
-
-.p-datatable.pasco-table .p-datatable-tbody > tr:hover > td {
-  background: #faf8ff;
-}
-
-.p-datatable.pasco-table .p-sortable-column.p-highlight,
-.p-datatable.pasco-table .p-sortable-column .p-sortable-column-icon {
-  color: var(--color-pasco-purple) !important;
-}
-
-/* Filter trigger button */
-.p-datatable.pasco-table .p-column-filter-menu-button {
-  color: var(--color-pasco-purple) !important;
-  background: transparent !important;
-  border-radius: 9999px !important;
-}
-
-.p-datatable.pasco-table .p-column-filter-menu-button:hover,
-.p-datatable.pasco-table .p-column-filter-menu-button.p-column-filter-menu-button-open {
-  background: #efe7ff !important;
-  color: var(--color-pasco-purple) !important;
-}
-
-/* Paginator */
-.p-datatable.pasco-table .p-paginator {
-  background: var(--color-neutral-100) !important;
-  border-top: 1px solid var(--color-neutral-300);
-  padding: 0.875rem 1rem;
-  gap: 0.25rem;
-}
-
-.p-datatable.pasco-table .p-paginator .p-paginator-current {
-  color: var(--color-neutral-700);
-}
-
-.p-datatable.pasco-table .p-paginator .p-paginator-page,
-.p-datatable.pasco-table .p-paginator .p-paginator-next,
-.p-datatable.pasco-table .p-paginator .p-paginator-prev,
-.p-datatable.pasco-table .p-paginator .p-paginator-first,
-.p-datatable.pasco-table .p-paginator .p-paginator-last {
-  min-width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 9999px;
-  color: var(--color-pasco-purple);
-  border: 1px solid transparent;
-  background: transparent;
-}
-
-.p-datatable.pasco-table .p-paginator .p-paginator-page.p-highlight {
+.p-paginator-page.p-paginator-page-selected,
+.p-button-text.p-button-secondary:not(:disabled):hover {
   background: var(--color-pasco-purple) !important;
-  border-color: var(--color-pasco-purple) !important;
-  color: #fff !important;
+  color: white !important;
+  font-weight: 600;
+}
+.p-datatable-table-container {
+  border-radius: 0.5rem;
+  color: var(--color-neutral-900);
+  border: #ece8f5 2px solid !important;
+}
+.pasco-table .p-datatable-thead tr > th {
+  background: var(--color-table-heading) !important;
+  color: #0d47a1 !important;
+}
+.pasco-table .p-datatable-tbody > tr {
+  background: var(--color-neutral-100) !important;
+  border-bottom: 1px solid #ece8f5 !important;
 }
 
-.p-datatable.pasco-table .p-paginator .p-paginator-page:not(.p-highlight):hover,
-.p-datatable.pasco-table .p-paginator .p-paginator-next:hover,
-.p-datatable.pasco-table .p-paginator .p-paginator-prev:hover,
-.p-datatable.pasco-table .p-paginator .p-paginator-first:hover,
-.p-datatable.pasco-table .p-paginator .p-paginator-last:hover {
-  background: #f6f0ff !important;
-  border-color: #e6dbfa !important;
-  color: var(--color-pasco-purple) !important;
+.pasco-table .p-datatable-header {
+  background: white;
+  border: none;
 }
 
-.p-datatable.pasco-table .p-paginator .p-select {
+.pasco-table .p-datatable-thead > tr > th {
+  background: #faf7fd;
+  color: #683088;
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 1px solid #ece8f5;
+}
+
+.pasco-table .p-datatable-thead > tr > th:hover,
+.pasco-table .p-datatable-thead > tr > th.p-sortable-column:hover {
+  background: #f3ecff;
+  color: #683088;
+}
+
+.pasco-table .p-datatable-tbody > tr > td {
+  padding: 1rem;
+  color: var(--color-neutral-900);
+  background: var(--color-neutral-100);
+  border-bottom: 1px solid #ece8f5;
+}
+.pasco-table .p-datatable-tbody > tr:nth-child(even) td {
+  background: #f9fbff;
+}
+
+.pasco-table .p-paginator {
+  background: white;
+  border-top: 1px solid #ece8f5;
+}
+
+.pasco-table .p-paginator .p-highlight {
+  background: #683088;
+  color: white;
+}
+
+.p-button.p-button-primary {
+  background: #683088;
+  border-color: #683088;
+}
+
+.p-button.p-button-primary:hover {
+  background: #58296f;
+  border-color: #58296f;
+}
+
+.pasco-table .p-datatable-tbody .p-splitbutton-button.p-button,
+.pasco-table .p-datatable-tbody .p-button {
+  background: #e3f2fd;
+  border: 1px solid #e3f2fd;
+  color: #0d47a1;
+}
+.pasco-table .p-datatable-tbody .p-splitbutton-button.p-button:hover,
+.pasco-table .p-datatable-tbody .p-button:hover {
+  background: #bbdefb;
+  border: 1px solid #bbdefb;
+  color: #0d47a1;
+}
+.p-tieredmenu,
+.p-datatable-filter-overlay,
+.p-paginator-rpp-dropdown,
+.p-select-list-container {
+  border: none !important;
+  background: var(--color-pasco-purple) !important;
+}
+
+.p-datatable-filter-overlay .p-button {
+  background: var(--color-pasco-orange) !important;
+  color: var(--color-neutral-900) !important;
+  border: 1px solid var(--color-pasco-orange) !important;
+}
+.p-datatable-filter-overlay .p-button-outlined {
+  background-color: transparent !important;
+  border-color: var(--color-pasco-orange) !important;
+  color: var(--color-pasco-orange) !important;
+}
+.p-datatable-filter-overlay .p-datatable-filter-add-rule-button {
   background: transparent !important;
-  border: 1px solid var(--color-neutral-300) !important;
-  border-radius: 0.5rem !important;
-  box-shadow: none !important;
+  color: var(--color-pasco-orange) !important;
+  font-weight: 500;
+  border: none !important;
 }
-
-.p-datatable.pasco-table .p-paginator .p-select:hover,
-.p-datatable.pasco-table .p-paginator .p-select.p-focus {
-  border-color: var(--color-pasco-purple) !important;
-}
-
-.p-datatable.pasco-table .p-paginator .p-select-label,
-.p-datatable.pasco-table .p-paginator .p-select-trigger,
-.p-datatable.pasco-table .p-paginator .p-select-dropdown-icon {
-  background: transparent !important;
-  color: var(--color-pasco-purple) !important;
-}
-
-/* Global select overlay */
-body .p-select-overlay {
-  background: #fff !important;
-  border: 1px solid #e6dbfa !important;
-  border-radius: 0.75rem !important;
-  box-shadow: 0 12px 30px rgba(90, 47, 145, 0.14) !important;
-}
-
-body .p-select-option {
-  background: #fff !important;
-  color: var(--color-neutral-900) !important;
-}
-
-body .p-select-option:hover,
-body .p-select-option.p-focus {
-  background: #efe7ff !important;
-  color: var(--color-pasco-purple) !important;
-}
-
-body .p-select-option.p-select-option-selected,
-body .p-select-option.p-select-option-selected:hover {
-  background: var(--color-primary-indigo) !important;
-  color: #fff !important;
-}
-
-/* Column filter overlay */
-body .p-column-filter-overlay,
-body .p-columnfilter-overlay {
-  background: #fff !important;
-  color: var(--color-neutral-900) !important;
-  border: 1px solid #e6dbfa !important;
-  border-radius: 0.75rem !important;
-  box-shadow: 0 12px 30px rgba(90, 47, 145, 0.14) !important;
-}
-
-body .p-column-filter-overlay .p-select,
-body .p-column-filter-overlay .p-inputtext,
-body .p-columnfilter-overlay .p-select,
-body .p-columnfilter-overlay .p-inputtext {
-  background: #fff !important;
-  color: var(--color-neutral-900) !important;
-  border: 1px solid #d8c9f7 !important;
-  border-radius: 0.5rem !important;
-  box-shadow: none !important;
-}
-
-body .p-column-filter-overlay .p-select-label,
-body .p-column-filter-overlay .p-inputtext,
-body .p-columnfilter-overlay .p-select-label,
-body .p-columnfilter-overlay .p-inputtext {
-  color: var(--color-neutral-900) !important;
-  background: transparent !important;
-}
-
-body .p-column-filter-overlay .p-select-trigger,
-body .p-column-filter-overlay .p-select-dropdown-icon,
-body .p-columnfilter-overlay .p-select-trigger,
-body .p-columnfilter-overlay .p-select-dropdown-icon {
-  color: var(--color-neutral-700) !important;
-  background: transparent !important;
-}
-
-body .p-column-filter-overlay,
-body .p-column-filter-overlay *:not(.pi),
-body .p-columnfilter-overlay,
-body .p-columnfilter-overlay *:not(.pi) {
-  color: var(--color-neutral-900) !important;
-}
-
-/* Filter menu buttons */
-body .p-column-filter-overlay .p-button,
-body .p-columnfilter-overlay .p-button {
-  background: var(--color-primary-indigo) !important;
-  border: 1px solid var(--color-primary-indigo) !important;
-  color: #fff !important;
-  border-radius: 0.5rem !important;
-  box-shadow: none !important;
-}
-
-body .p-column-filter-overlay .p-button:hover,
-body .p-columnfilter-overlay .p-button:hover {
-  background: var(--color-primary-indigo-dark) !important;
-  border-color: var(--color-primary-indigo-dark) !important;
-  color: #fff !important;
-}
-
-body .p-column-filter-overlay .p-button .p-button-label,
-body .p-column-filter-overlay .p-button .p-button-icon,
-body .p-columnfilter-overlay .p-button .p-button-label,
-body .p-columnfilter-overlay .p-button .p-button-icon {
-  color: #fff !important;
-}
-.p-datatable-column-sorted .p-datatable-sort-icon {
-  color: var(--p-datatable-sort-icon-color) !important;
-}
-.p-datatable-filter-overlay {
-  background-color:var(--color-pasco-purple) !important;
-}
-.p-datatable-filter-overlay p-button button{
-  background-color:var(--color-pasco-orange);
-  border:none;
-  color:#fff;
-}
-.p-datatable-filter-overlay .p-ripple .p-button .p-button-outlined .p-button-sm .p-component button{
-  background-color:transparent !important;
-  border:2px solid var(--color-pasco-orange) !important;
+.p-tieredmenu span {
+  color: white !important;
 }

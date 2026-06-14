@@ -9,12 +9,7 @@ import { AuthInterceptor } from '../core/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [App],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    HttpClientModule,
-    RouterModule.forRoot(routes),
-  ],
+  imports: [BrowserModule, CommonModule, HttpClientModule, RouterModule.forRoot(routes)],
   exports: [App],
   bootstrap: [App],
   providers: [

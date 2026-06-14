@@ -32,6 +32,8 @@
             ],
             "styles": [
               "node_modules/primeicons/primeicons.css",
+              "node_modules/primeflex/primeflex.min.css",
+              "node_modules/primeflex/themes/primeone-light.css",
               "src/styles.scss"
             ]
           },

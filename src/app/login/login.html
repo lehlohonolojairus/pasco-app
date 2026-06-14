@@ -2,7 +2,6 @@
   class="min-h-screen flex flex-col items-center justify-center px-l bg-gradient-to-b from-pasco-purple to-primary-indigo"
 >
   <div class="w-full max-w-md">
-
     <div class="flex justify-center mb-xl">
       <img src="./pasco_logo.png" alt="Pasco logo" class="h-20 w-auto" />
     </div>
@@ -11,7 +10,6 @@
       <h2 class="text-h2 text-pasco-purple text-center mb-xl">Welcome Back</h2>
 
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
-
         @if (errorMessage()) {
           <div class="alert-error mb-l">{{ errorMessage() }}</div>
         }
@@ -20,7 +18,7 @@
         <div class="mb-l">
           <label class="input-label" for="email">Email</label>
           <div
-            class="flex items-center border rounded-btn px-m py-m gap-m transition-colors duration-150  shadow-sm"
+            class="flex items-center border rounded-btn px-m py-m gap-m transition-colors duration-150 shadow-sm"
             [class.border-neutral-300]="!(emailControl.invalid && emailControl.touched)"
             [class.border-status-error]="emailControl.invalid && emailControl.touched"
             [class.focus-within:border-primary-indigo]="true"
@@ -36,8 +34,11 @@
           </div>
           @if (emailControl.invalid && emailControl.touched) {
             <p class="text-caption text-status-error mt-xs">
-              @if (emailControl.hasError('required')) { Email is required. }
-              @else if (emailControl.hasError('email')) { Enter a valid email address. }
+              @if (emailControl.hasError('required')) {
+                Email is required.
+              } @else if (emailControl.hasError('email')) {
+                Enter a valid email address.
+              }
             </p>
           }
         </div>
@@ -61,20 +62,22 @@
           </div>
           @if (passwordControl.invalid && passwordControl.touched) {
             <p class="text-caption text-status-error mt-xs">
-              @if (passwordControl.hasError('required')) { Password is required. }
-              @else if (passwordControl.hasError('minlength')) { Minimum 6 characters required. }
+              @if (passwordControl.hasError('required')) {
+                Password is required.
+              } @else if (passwordControl.hasError('minlength')) {
+                Minimum 6 characters required.
+              }
             </p>
           }
           <div class="text-right mt-s">
-            <a class="text-caption text-primary-indigo cursor-pointer hover:underline">Forgot Password?</a>
+            <a class="text-caption text-primary-indigo cursor-pointer hover:underline"
+              >Forgot Password?</a
+            >
           </div>
         </div>
 
         <!-- Google -->
-        <button
-          type="button"
-          class="btn-ghost w-full flex items-center justify-center gap-m mb-l"
-        >
+        <button type="button" class="btn-ghost w-full flex items-center justify-center gap-m mb-l">
           <img src="./google-logo-search-new-svgrepo-com.svg" class="w-5 h-5" />
           Continue with Google
         </button>
@@ -96,7 +99,6 @@
           Don't have an account?
           <a class="text-primary-indigo font-semibold cursor-pointer hover:underline">Sign Up</a>
         </p>
-
       </form>
     </div>
   </div>

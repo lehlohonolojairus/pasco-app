@@ -4,7 +4,7 @@ import { Component, signal } from '@angular/core';
   selector: 'pasco-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
-  standalone: false
+  standalone: false,
 })
 export class App {
   protected readonly title = signal('pasco-app');

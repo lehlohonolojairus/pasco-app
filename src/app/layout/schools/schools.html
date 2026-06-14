@@ -1,167 +1,86 @@
-<div class="card">
-  <p-toolbar styleClass="mb-4 !bg-transparent !border-0 !p-0">
-    <ng-template pTemplate="start">
-      <div>
-      </div>
-    </ng-template>
+<p-table
+  #dt
+  [value]="schools()"
+  [paginator]="true"
+  [rows]="10"
+  [rowsPerPageOptions]="[10, 25, 50, 100]"
+  [showCurrentPageReport]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} schools"
+  [globalFilterFields]="['name', 'headOfficeEmailAddress', 'headOfficeTelephoneNumber']"
+  responsiveLayout="scroll"
+  sortMode="multiple"
+  styleClass="pasco-table"
+>
+  <ng-template pTemplate="header">
+    <tr>
+      <th style="width: 90px">Logo</th>
 
-    <ng-template pTemplate="end">
-      <button
-        pButton
-        type="button"
-        icon="pi pi-plus"
-        label="Add School"
-        class="pasco-primary-btn"
-      ></button>
-    </ng-template>
-  </p-toolbar>
+      <th pSortableColumn="name">
+        School
 
-  <p-table
-    #dt
-    [value]="schools()"
-    dataKey="id"
-    [paginator]="true"
-    [rows]="5"
-    [rowsPerPageOptions]="[5, 10, 25, 50]"
-    [showCurrentPageReport]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} schools"
-    [globalFilterFields]="['name', 'website', 'headOfficeEmailAddress', 'headOfficeTelephoneNumber', 'headOfficeFaxNumber']"
-    responsiveLayout="scroll"
-    sortMode="multiple"
-    [stripedRows]="true"
-    showGridlines
-    styleClass="pasco-table p-datatable-sm"
-    [tableStyle]="{ 'min-width': '72rem' }"
-    paginatorDropdownAppendTo="body"
-  >
+        <p-sortIcon field="name"></p-sortIcon>
 
+        <p-columnFilter field="name" display="menu" type="text"> </p-columnFilter>
+      </th>
 
-    <ng-template pTemplate="header">
-      <tr>
-        <th class="w-24">
-          <span class="text-sm font-semibold">Logo</span>
-        </th>
+      <th pSortableColumn="headOfficeEmailAddress">
+        Email
 
-        <th pSortableColumn="name">
-          <div class="flex items-center justify-between gap-2">
-            <span class="text-sm font-semibold">Name</span>
-            <div class="flex items-center gap-2">
-              <p-sortIcon field="name"></p-sortIcon>
-              <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
-            </div>
-          </div>
-        </th>
+        <p-sortIcon field="headOfficeEmailAddress"></p-sortIcon>
 
-        <th pSortableColumn="headOfficeEmailAddress">
-          <div class="flex items-center justify-between gap-2">
-            <span class="text-sm font-semibold">Email</span>
-            <div class="flex items-center gap-2">
-              <p-sortIcon field="headOfficeEmailAddress"></p-sortIcon>
-              <p-columnFilter type="text" field="headOfficeEmailAddress" display="menu"></p-columnFilter>
-            </div>
-          </div>
-        </th>
+        <p-columnFilter field="headOfficeEmailAddress" display="menu" type="text"> </p-columnFilter>
+      </th>
 
-        <th pSortableColumn="headOfficeTelephoneNumber">
-          <div class="flex items-center justify-between gap-2">
-            <span class="text-sm font-semibold">Telephone</span>
-            <div class="flex items-center gap-2">
-              <p-sortIcon field="headOfficeTelephoneNumber"></p-sortIcon>
-              <p-columnFilter type="text" field="headOfficeTelephoneNumber" display="menu"></p-columnFilter>
-            </div>
-          </div>
-        </th>
+      <th pSortableColumn="headOfficeTelephoneNumber">
+        Telephone
 
-        <th pSortableColumn="website">
-          <div class="flex items-center justify-between gap-2">
-            <span class="text-sm font-semibold">Website</span>
-            <div class="flex items-center gap-2">
-              <p-sortIcon field="website"></p-sortIcon>
-              <p-columnFilter type="text" field="website" display="menu"></p-columnFilter>
-            </div>
-          </div>
-        </th>
+        <p-sortIcon field="headOfficeTelephoneNumber"></p-sortIcon>
+      </th>
 
-        <th class="w-28">
-          <span class="text-sm font-semibold">Actions</span>
-        </th>
-      </tr>
-    </ng-template>
+      <th>Website</th>
 
-    <ng-template pTemplate="body" let-school>
-      <tr>
-        <td>
-          @if (school.logoUrl) {
-            <img
-              [src]="school.logoUrl"
-              [alt]="school.name"
-              class="h-12 w-16 rounded-md object-contain bg-white"
-            />
-          } @else {
-            <div class="flex h-12 w-16 items-center justify-center rounded-md bg-[var(--color-neutral-100)] text-xs text-[var(--color-neutral-700)]">
-              No logo
-            </div>
-          }
-        </td>
+      <th style="width: 120px">Actions</th>
+    </tr>
+  </ng-template>
 
-        <td>
-          <div class="font-medium text-[var(--color-neutral-900)]">{{ school.name }}</div>
-        </td>
+  <ng-template pTemplate="body" let-school>
+    <tr>
+      <td>
+        <img
+          [src]="school.logoUrl"
+          class="w-12 h-12 object-contain rounded-lg border border-slate-200 p-1 bg-white"
+        />
+      </td>
 
-        <td>
-          <a
-            [href]="'mailto:' + school.headOfficeEmailAddress"
-            class="text-[var(--color-pasco-purple)] hover:underline"
-          >
-            {{ school.headOfficeEmailAddress || '—' }}
-          </a>
-        </td>
+      <td>
+        <div class="font-semibold text-slate-800">
+          {{ school.name }}
+        </div>
 
-        <td>{{ school.headOfficeTelephoneNumber || '—' }}</td>
+        <div class="text-xs text-slate-500">
+          {{ school.id }}
+        </div>
+      </td>
 
-        <td>
-          @if (school.website) {
-            <a
-              [href]="school.website"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-[var(--color-pasco-purple)] hover:underline"
-            >
-              {{ school.website }}
-            </a>
-          } @else {
-            <span>—</span>
-          }
-        </td>
+      <td>
+        {{ school.headOfficeEmailAddress }}
+      </td>
 
-        <td>
-          <div class="flex items-center gap-2">
-            <button
-              pButton
-              type="button"
-              icon="pi pi-pencil"
-              [text]="true"
-              class="!h-9 !w-9 !text-[var(--color-pasco-purple)] hover:!bg-[color-mix(in_srgb,var(--color-pasco-purple)_10%,white)]"
-            ></button>
+      <td>
+        {{ school.headOfficeTelephoneNumber }}
+      </td>
 
-            <button
-              pButton
-              type="button"
-              icon="pi pi-eye"
-              [text]="true"
-              class="!h-9 !w-9 !text-[var(--color-pasco-orange)] hover:!bg-[color-mix(in_srgb,var(--color-pasco-orange)_10%,white)]"
-            ></button>
-          </div>
-        </td>
-      </tr>
-    </ng-template>
+      <td>
+        <a *ngIf="school.website" [href]="school.website" class="text-purple-700 hover:underline">
+          Visit Website
+        </a>
 
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="6" class="py-8 text-center text-sm text-[var(--color-neutral-700)]">
-          No schools found.
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
-</div>
+        <span *ngIf="!school.website" class="text-slate-400"> — </span>
+      </td>
+
+      <td>
+        <p-splitButton [model]="rowActions"> </p-splitButton>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

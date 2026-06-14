@@ -14,17 +14,15 @@ const TOKEN_KEY = 'auth_token';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   constructor(private http: HttpClient) {}
-  
+
   login(payload: LoginPayload): Observable<ApiResponse<string>> {
-    return this.http
-    .post<ApiResponse<string>>(Config.users.login, payload)
-    .pipe(
+    return this.http.post<ApiResponse<string>>(Config.users.login, payload).pipe(
       tap((res) => {
-          if (res.isSuccess && res.data) {
-            this.setToken(res.data);
-          }
-        })
-      );
+        if (res.isSuccess && res.data) {
+          this.setToken(res.data);
+        }
+      }),
+    );
   }
   setToken(token: string) {
     console.log('Setting token:', token);

@@ -6,7 +6,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [Login],
-  imports: [CommonModule, ReactiveFormsModule, RouterModule.forChild([{ path: '', component: Login }])],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule.forChild([{ path: '', component: Login }]),
+  ],
   exports: [Login],
 })
 export class LoginModule {}

@@ -19,7 +19,10 @@ export class Login {
   errorMessage = signal<string | null>(null);
   isFormValid = computed(() => this.form.valid);
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
   onSubmit() {
     if (this.form.invalid) {
@@ -49,6 +52,10 @@ export class Login {
     });
   }
 
-  get emailControl() { return this.form.controls.email; }
-  get passwordControl() { return this.form.controls.password; }
+  get emailControl() {
+    return this.form.controls.email;
+  }
+  get passwordControl() {
+    return this.form.controls.password;
+  }
 }

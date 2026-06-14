@@ -7,9 +7,10 @@ import { Select, SelectModule } from 'primeng/select';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
-import { InputIconModule} from 'primeng/inputicon';
-import { IconFieldModule} from 'primeng/iconfield';
-import { ToolbarModule} from 'primeng/toolbar';
+import { InputIconModule } from 'primeng/inputicon';
+import { IconFieldModule } from 'primeng/iconfield';
+import { ToolbarModule } from 'primeng/toolbar';
+import { SplitButtonModule } from 'primeng/splitbutton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [Schools],
@@ -23,6 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InputIconModule,
     IconFieldModule,
     ToolbarModule,
+    SplitButtonModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([{ path: '', component: Schools }]),
