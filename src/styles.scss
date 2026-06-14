@@ -464,7 +464,7 @@
 }
 
 .p-column-filter-menu-button:hover {
-  background: #f6f3ff;
+  background: #f6f0ff;
   color: #4c2d91;
 }
 
@@ -490,4 +490,141 @@
 
 .p-datatable .p-datatable-tbody > tr:hover {
   background: #faf8ff;
+}
+
+/* PASCO PrimeNG table theme */
+.p-datatable.pasco-table {
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: #fff;
+}
+
+.p-datatable.pasco-table .p-datatable-header {
+  background:var(--color-neutral-100);
+  border-bottom: 1px solid var(--color-neutral-300);
+  padding: 1rem 1.25rem;
+}
+
+.p-datatable.pasco-table .p-datatable-thead > tr > th {
+  color: var(--color-pasco-purple);
+  border-color: var(--color-neutral-300);
+  font-weight: 600;
+  padding: 0.95rem 1rem;
+}
+
+.p-datatable.pasco-table .p-datatable-tbody > tr > td {
+  background: #fff;
+  color: var(--color-neutral-900);
+  border-color: var(--color-neutral-200);
+  padding: 0.95rem 1rem;
+}
+
+.p-datatable.pasco-table.p-datatable-striped .p-datatable-tbody > tr:nth-child(even) > td {
+  background: var(--color-neutral-100);
+}
+
+.p-datatable.pasco-table .p-datatable-tbody > tr:hover > td {
+  background: var(--color-neutral-100);
+}
+
+.p-datatable.pasco-table .p-sortable-column.p-highlight,
+.p-datatable.pasco-table .p-sortable-column .p-sortable-column-icon {
+  color: var(--color-pasco-purple);
+}
+
+.p-datatable.pasco-table .p-column-filter-menu-button {
+  color: var(--color-pasco-purple);
+}
+
+.p-datatable.pasco-table .p-column-filter-menu-button:hover,
+.p-datatable.pasco-table .p-column-filter-menu-button.p-column-filter-menu-button-open {
+  background: #f6f0ff;
+  color: var(--color-pasco-purple);
+}
+
+.p-datatable.pasco-table .p-paginator {
+  background: #fffaf5;
+  border-top: 1px solid #f3dcc0;
+  padding: 0.875rem 1rem;
+  gap: 0.25rem;
+}
+
+.p-datatable.pasco-table .p-paginator .p-paginator-current {
+  color: var(--color-neutral-700);
+}
+
+.p-datatable.pasco-table .p-paginator .p-paginator-page,
+.p-datatable.pasco-table .p-paginator .p-paginator-next,
+.p-datatable.pasco-table .p-paginator .p-paginator-prev,
+.p-datatable.pasco-table .p-paginator .p-paginator-first,
+.p-datatable.pasco-table .p-paginator .p-paginator-last {
+  min-width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  color: var(--color-pasco-purple);
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.p-datatable.pasco-table .p-paginator .p-paginator-page.p-highlight {
+  background: var(--color-pasco-purple) !important;
+  border-color: var(--color-pasco-purple) !important;
+  color: #fff !important;
+}
+
+.p-datatable.pasco-table .p-paginator .p-paginator-page:not(.p-highlight):hover,
+.p-datatable.pasco-table .p-paginator .p-paginator-next:hover,
+.p-datatable.pasco-table .p-paginator .p-paginator-prev:hover,
+.p-datatable.pasco-table .p-paginator .p-paginator-first:hover,
+.p-datatable.pasco-table .p-paginator .p-paginator-last:hover {
+  background: #f6f0ff !important;
+  border-color: #e6dbfa !important;
+  color: var(--color-pasco-purple) !important;
+}
+
+.p-datatable.pasco-table .p-paginator .p-select {
+  background: transparent !important;
+  border: 1px solid #f3dcc0 !important;
+  box-shadow: none !important;
+  border-radius: 0.5rem;
+}
+
+.p-datatable.pasco-table .p-paginator .p-select:hover,
+.p-datatable.pasco-table .p-paginator .p-select.p-focus {
+  border-color: var(--color-pasco-purple) !important;
+}
+
+.p-datatable.pasco-table .p-paginator .p-select-label,
+.p-datatable.pasco-table .p-paginator .p-select-trigger,
+.p-datatable.pasco-table .p-paginator .p-select-dropdown-icon {
+  background: transparent !important;
+  color: var(--color-pasco-purple) !important;
+}
+
+.p-select-overlay {
+  background: #fff !important;
+  border: 1px solid #f3dcc0 !important;
+  border-radius: 0.5rem !important;
+  box-shadow: 0 10px 24px rgba(90, 47, 145, 0.12) !important;
+}
+
+.p-select-option {
+  background: #fff !important;
+  color: var(--color-neutral-900) !important;
+}
+
+.p-select-option:hover,
+.p-select-option.p-focus {
+  background: #f6f0ff !important;
+  color: var(--color-pasco-purple) !important;
+}
+
+.p-select-option.p-select-option-selected,
+.p-select-option.p-select-option-selected:hover {
+  background: var(--color-pasco-purple) !important;
+  color: #fff !important;
+}
+.p-component .p-paginator{
+  background:var(--color-neutral-100) !important;
 }
