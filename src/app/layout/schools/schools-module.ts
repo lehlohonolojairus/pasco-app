@@ -13,9 +13,11 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TooltipModule } from 'primeng/tooltip';
+import { SchoolsStats } from '../components/schools-stats/schools-stats';
 @NgModule({
   declarations: [Schools],
   imports: [
+    SchoolsStats,
     CommonModule,
     TableModule,
     SelectModule,

@@ -1,3 +1,6 @@
+<div class="w-full flex justify-between items-center">
+  <pasco-schools-stats [schools]="schools()" />
+</div>
 <div class="flex flex-col gap-3 pb-2 sm:flex-row sm:items-center sm:justify-between">
   <div></div>
   <button
@@ -47,6 +50,7 @@
       </th>
 
       <th>Website</th>
+      <th>Status</th>
       <th style="width: 120px">Actions</th>
     </tr>
   </ng-template>
@@ -73,20 +77,35 @@
       <td>{{ school.headOfficeEmailAddress }}</td>
       <td>{{ school.headOfficeTelephoneNumber }}</td>
 
-      <td>        
+      <td>
         @if (!school.website) {
           <span class="text-slate-400">—</span>
-        }@else {
-          <a [href]="school.website" class="text-purple-700 hover:underline">
-          Visit Website
-        </a>
+        } @else {
+          <a [href]="school.website" class="text-purple-700 hover:underline"> Visit Website </a>
         }
       </td>
-
       <td>
-        <span pTooltip="School actions" tooltipPosition="top">
-          <p-splitButton [model]="rowActions"></p-splitButton>
-        </span>
+        <p-tag [value]="school.status" [severity]="getSeverityClass(school.status)">
+        </p-tag>
+      </td>
+      <td>
+        <button
+          type="button"
+          pButton
+          icon="pi pi-pencil"
+          class="text p-button-sm"
+          (click)="editSchool(school)"
+          pTooltip="Edit school details"
+          tooltipPosition="top"
+        ></button>
+        <p-button
+          type="button"
+          icon="pi pi-trash"
+          class="p-button-text p-button-sm"
+          (click)="deleteSchool(school)"
+          pTooltip="Delete school"
+          tooltipPosition="top"
+        ></p-button>
       </td>
     </tr>
   </ng-template>

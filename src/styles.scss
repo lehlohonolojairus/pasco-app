@@ -80,8 +80,12 @@
     --color-neutral-300: #d6d6d6;
     --color-neutral-100: #f7f7f9;
     --color-status-success: #43a047;
+    --color-status-success-light: #dcfce7;
     --color-status-warning: #ffca28;
+    --color-status-warning-alt: #f49b2e;
+    --color-status-warning-light: #ffedd5;
     --color-status-error: #e53935;
+    --color-status-error-light: #ffcdd2;
     --color-status-info: #1e88e5;
   }
 
@@ -484,6 +488,9 @@
 .pasco-table .p-datatable-tbody > tr:nth-child(even) td {
   background: #f9fbff;
 }
+.pasco-table .p-datatable-tbody > tr > td:last-child {
+  display: flex;
+}
 
 .pasco-table .p-paginator {
   background: white;
@@ -507,15 +514,15 @@
 
 .pasco-table .p-datatable-tbody .p-splitbutton-button.p-button,
 .pasco-table .p-datatable-tbody .p-button {
-  background: #e3f2fd;
-  border: 1px solid #e3f2fd;
-  color: #0d47a1;
+  background: transparent;
+  border: none;
+  color: var(--color-status-info);
+  font-weight: bold;
 }
 .pasco-table .p-datatable-tbody .p-splitbutton-button.p-button:hover,
 .pasco-table .p-datatable-tbody .p-button:hover {
-  background: #bbdefb;
+  background: transparent;
   border: 1px solid #bbdefb;
-  color: #0d47a1;
 }
 .p-tieredmenu,
 .p-datatable-filter-overlay,
@@ -543,4 +550,19 @@
 }
 .p-tieredmenu span {
   color: white !important;
+}
+.p-tag {
+  width: 100px !important;
+}
+.p-tag-success {
+  background-color: var(--color-status-success-light) !important;
+  color: var(--color-status-success) !important;
+}
+.p-tag-danger {
+  background-color: var(--color-status-error-light) !important;
+  color: var(--color-status-error) !important;
+}
+.p-tag-warn {
+  background-color: var(--color-status-warning-light) !important;
+  color: var(--color-status-warning-alt) !important;
 }

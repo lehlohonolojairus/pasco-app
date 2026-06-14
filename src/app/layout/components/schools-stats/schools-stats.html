@@ -1,0 +1,91 @@
+<!-- schools-stats.component.html -->
+
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+  <div class="bg-white rounded-2xl border border-slate-200 p-6">
+    <div class="flex items-center gap-4">
+      <div class="w-16 h-16 rounded-full bg-purple-200 flex items-center justify-center">
+        <i class="pi pi-building text-2xl text-pasco-purple"></i>
+      </div>
+
+      <div>
+        <div class="text-4xl font-bold">
+          {{ totalSchoolsCount() }}
+        </div>
+
+        <div class="text-slate-900">
+          @if (totalSchoolsCount() === 1) {
+            <span> Total School</span>
+          } @else {
+            <span> Total Schools</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl border border-slate-200 p-6">
+    <div class="flex items-center gap-4">
+      <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+        <i class="pi pi-shield text-2xl text-green-500"></i>
+      </div>
+
+      <div>
+        <div class="text-4xl font-bold">
+          {{ activeSchoolsCount() }}
+        </div>
+
+        <div class="text-slate-900">
+          @if (activeSchoolsCount() === 1) {
+            <span> Active School</span>
+          } @else {
+            <span> Active Schools</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl border border-slate-200 p-6">
+    <div class="flex items-center gap-4">
+      <div class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center">
+        <i class="pi pi-clock text-2xl text-pasco-orange"></i>
+      </div>
+
+      <div>
+        <div class="text-4xl font-bold">
+          {{ pendingSchoolsCount() }}
+        </div>
+
+        <div class="text-slate-900">
+          @if (pendingSchoolsCount() === 1) {
+            <span> Pending School</span>
+          } @else {
+            <span> Pending Schools</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white rounded-2xl border border-slate-200 p-6">
+    <div class="flex items-center gap-4">
+      <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center">
+        <i class="pi pi-pause text-2xl text-red-500"></i>
+      </div>
+
+      <div>
+        <div class="text-4xl font-bold">
+          {{ suspendedSchoolsCount() }}
+        </div>
+
+        <div class="text-slate-900">
+          @if (suspendedSchoolsCount() === 1) {
+            <span> Suspended School</span>
+          } @else {
+            <span> Suspended Schools</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

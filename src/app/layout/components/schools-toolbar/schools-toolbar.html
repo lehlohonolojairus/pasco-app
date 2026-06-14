@@ -1,0 +1,63 @@
+<!-- schools-toolbar.component.html -->
+
+<div
+  class="bg-white rounded-2xl border border-slate-200 p-5">
+
+  <div
+    class="flex flex-wrap gap-4 justify-between items-center">
+
+    <div class="flex flex-wrap gap-3">
+
+      <!-- Search -->
+
+      <span class="relative">
+
+        <i
+          class="pi pi-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+        </i>
+
+        <input
+          pInputText
+          placeholder="Search schools by name, email or phone..."
+          class="pl-10 w-[320px]"
+          (input)="searchChanged($event)" />
+
+      </span>
+
+      <!-- <p-select
+        [options]="statusOptions"
+        placeholder="Status">
+      </p-select>
+
+      <p-select
+        [options]="provinceOptions"
+        placeholder="Province">
+      </p-select>
+
+      <p-select
+        [options]="typeOptions"
+        placeholder="School Type">
+      </p-select> -->
+
+    </div>
+
+    <div class="flex gap-3">
+
+      <button
+        pButton
+        severity="secondary"
+        icon="pi pi-download"
+        label="Export">
+      </button>
+
+      <button
+        pButton
+        icon="pi pi-plus"
+        label="Add School">
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

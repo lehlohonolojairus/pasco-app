@@ -2,21 +2,7 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { ApplicationState } from '../services/application-state';
 import { Table } from 'primeng/table';
 import { MenuItem } from 'primeng/api';
-export enum SchoolStatus {
-  ACTIVE = 'ACTIVE',
-  PENDING = 'PENDING',
-  SUSPENDED = 'SUSPENDED',
-  ARCHIVED = 'ARCHIVED',
-}
-interface School {
-  id: string;
-  name: string;
-  logoUrl: string;
-  website: string;
-  headOfficeEmailAddress: string;
-  headOfficeTelephoneNumber: string;
-  headOfficeFaxNumber: string;
-}
+import { School, SchoolStatus } from './school.model';
 
 @Component({
   selector: 'pasco-schools',
@@ -38,6 +24,7 @@ export class Schools {
       headOfficeEmailAddress: 'admin@almacambridge.org.za',
       headOfficeTelephoneNumber: '+27 11 660 7567',
       headOfficeFaxNumber: '',
+      status: SchoolStatus.ACTIVE,
     },
     {
       id: 'd93d7777-3e66-45be-87f4-2a2f21a6c41e',
@@ -48,6 +35,7 @@ export class Schools {
       headOfficeEmailAddress: 'ruimsig@crawfordinternational.co.za',
       headOfficeTelephoneNumber: '+27 11 958 0707',
       headOfficeFaxNumber: '',
+      status: SchoolStatus.SUSPENDED,
     },
     {
       id: '0eb30fea-94d6-4b28-a605-fde157ce1e80',
@@ -57,6 +45,7 @@ export class Schools {
       headOfficeEmailAddress: 'senior@kingsmead.co.za',
       headOfficeTelephoneNumber: '+27 11 731 7300',
       headOfficeFaxNumber: '+27 11 731-7399',
+      status: SchoolStatus.ACTIVE,
     },
     {
       id: 'b0392ee6-aac8-4198-85f1-44f312a63c26',
@@ -66,6 +55,7 @@ export class Schools {
       headOfficeEmailAddress: 'legendsacademysa@gmail.com',
       headOfficeTelephoneNumber: '+27 11 766 2545',
       headOfficeFaxNumber: '',
+      status: SchoolStatus.ARCHIVED,
     },
     {
       id: '997d54cf-9194-46df-8675-f746e059a2c6',
@@ -76,6 +66,7 @@ export class Schools {
       headOfficeEmailAddress: 'info@lionprideacademy.co.za',
       headOfficeTelephoneNumber: '+27 60 014 0722',
       headOfficeFaxNumber: '',
+      status: SchoolStatus.ACTIVE,
     },
     {
       id: 'fabbb55a-84c1-4521-b3f7-b7ff51171341',
@@ -85,6 +76,7 @@ export class Schools {
       headOfficeEmailAddress: 'legendsacademysa@gmail.com',
       headOfficeTelephoneNumber: '+27 11 766 2545',
       headOfficeFaxNumber: '',
+      status: SchoolStatus.PENDING,
     },
     {
       id: '019cb68a-a542-7cd7-8bf4-d2e5686ddbf3',
@@ -94,6 +86,7 @@ export class Schools {
       headOfficeEmailAddress: 'moletsane@high.school',
       headOfficeTelephoneNumber: '0710114331',
       headOfficeFaxNumber: '',
+      status: SchoolStatus.ARCHIVED,
     },
     {
       id: '123e4567-e89b-12d3-a456-426614174000',
@@ -104,12 +97,14 @@ export class Schools {
       headOfficeEmailAddress: 'privacy@sparkschools.co.za',
       headOfficeTelephoneNumber: '+27 10 125 0601',
       headOfficeFaxNumber: '',
+      status: SchoolStatus.SUSPENDED,
     },
   ]);
 
   rows = 25;
 
   pageSizeOptions = [
+    { label: '5 Rows', value: 5 },
     { label: '10 Rows', value: 10 },
     { label: '25 Rows', value: 25 },
     { label: '50 Rows', value: 50 },
@@ -228,7 +223,22 @@ export class Schools {
   constructor() {
     this.appState.pageTitle.set(this.title);
   }
-
+  getSeverityClass(
+    status: SchoolStatus,
+  ): "success" | "secondary" | "info" | "warn" | "danger" | "contrast" | null | undefined {
+    switch (status) {
+      case SchoolStatus.ACTIVE:
+        return 'success';
+      case SchoolStatus.PENDING:
+        return 'warn';
+      case SchoolStatus.SUSPENDED:
+        return 'danger';
+      case SchoolStatus.ARCHIVED:
+        return 'info';
+      default:
+        return 'info';
+    }
+  }
   clear(table: Table) {
     table.clear();
   }
