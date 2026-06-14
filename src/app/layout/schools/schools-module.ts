@@ -12,6 +12,7 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TooltipModule } from 'primeng/tooltip';
 @NgModule({
   declarations: [Schools],
   imports: [
@@ -25,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     IconFieldModule,
     ToolbarModule,
     SplitButtonModule,
+    TooltipModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([{ path: '', component: Schools }]),

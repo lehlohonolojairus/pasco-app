@@ -1,3 +1,17 @@
+<div class="flex flex-col gap-3 pb-2 sm:flex-row sm:items-center sm:justify-between">
+  <div></div>
+  <button
+    type="button"
+    class="btn-primary w-full sm:w-auto"
+    (click)="addSchool()"
+    pTooltip="Add a new school"
+    tooltipPosition="top"
+  >
+    <i class="pi pi-plus mr-2"></i>
+    Add School
+  </button>
+</div>
+
 <p-table
   #dt
   [value]="schools()"
@@ -17,28 +31,22 @@
 
       <th pSortableColumn="name">
         School
-
         <p-sortIcon field="name"></p-sortIcon>
-
-        <p-columnFilter field="name" display="menu" type="text"> </p-columnFilter>
+        <p-columnFilter field="name" display="menu" type="text"></p-columnFilter>
       </th>
 
       <th pSortableColumn="headOfficeEmailAddress">
         Email
-
         <p-sortIcon field="headOfficeEmailAddress"></p-sortIcon>
-
-        <p-columnFilter field="headOfficeEmailAddress" display="menu" type="text"> </p-columnFilter>
+        <p-columnFilter field="headOfficeEmailAddress" display="menu" type="text"></p-columnFilter>
       </th>
 
       <th pSortableColumn="headOfficeTelephoneNumber">
         Telephone
-
         <p-sortIcon field="headOfficeTelephoneNumber"></p-sortIcon>
       </th>
 
       <th>Website</th>
-
       <th style="width: 120px">Actions</th>
     </tr>
   </ng-template>
@@ -62,24 +70,23 @@
         </div>
       </td>
 
-      <td>
-        {{ school.headOfficeEmailAddress }}
-      </td>
+      <td>{{ school.headOfficeEmailAddress }}</td>
+      <td>{{ school.headOfficeTelephoneNumber }}</td>
 
-      <td>
-        {{ school.headOfficeTelephoneNumber }}
-      </td>
-
-      <td>
-        <a *ngIf="school.website" [href]="school.website" class="text-purple-700 hover:underline">
+      <td>        
+        @if (!school.website) {
+          <span class="text-slate-400">—</span>
+        }@else {
+          <a [href]="school.website" class="text-purple-700 hover:underline">
           Visit Website
         </a>
-
-        <span *ngIf="!school.website" class="text-slate-400"> — </span>
+        }
       </td>
 
       <td>
-        <p-splitButton [model]="rowActions"> </p-splitButton>
+        <span pTooltip="School actions" tooltipPosition="top">
+          <p-splitButton [model]="rowActions"></p-splitButton>
+        </span>
       </td>
     </tr>
   </ng-template>

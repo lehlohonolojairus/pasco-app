@@ -11,6 +11,7 @@ import { ModalDialogComponent } from './components/modal-dialog/modal-dialog.com
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { TableModule } from 'primeng/table';
 import { PrimeNG, providePrimeNG } from 'primeng/config';
+import { TooltipModule } from 'primeng/tooltip';
 import Aura from '@primeuix/themes/aura';
 @NgModule({
   declarations: [Layout, Sidebar, Header, UserProfile, ModalDialogComponent],
@@ -20,6 +21,7 @@ import Aura from '@primeuix/themes/aura';
     HttpClientModule,
     ChangePasswordComponent,
     TableModule,
+    TooltipModule,
     RouterModule.forChild([
       {
         path: '',
