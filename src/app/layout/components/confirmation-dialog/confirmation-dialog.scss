@@ -1,0 +1,77 @@
+:host {
+  display: contents;
+}
+
+.confirmation-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.45);
+}
+
+.confirmation-dialog-panel {
+  width: 100%;
+  max-width: 32rem;
+  background: #fff;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-modal);
+  border: 1px solid var(--pasco-border);
+  overflow: hidden;
+}
+
+.confirmation-dialog-body {
+  padding: 1.5rem;
+}
+
+.confirmation-dialog-message-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.confirmation-dialog-icon {
+  font-size: 1.25rem;
+  color: var(--pasco-primary);
+  margin-top: 0.125rem;
+}
+
+.confirmation-dialog-message {
+  margin: 0;
+  color: var(--pasco-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.confirmation-dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem 1.25rem;
+  border-top: 1px solid var(--pasco-border);
+}
+
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.625rem 1rem;
+  border: 0;
+  border-radius: var(--radius-btn);
+  background: #dc2626;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
+}

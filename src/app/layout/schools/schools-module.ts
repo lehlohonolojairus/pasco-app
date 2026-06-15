@@ -14,7 +14,11 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TooltipModule } from 'primeng/tooltip';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { DialogModule } from 'primeng/dialog';
+import { TabsModule } from 'primeng/tabs';
+import { ToastModule } from 'primeng/toast';
 import { SchoolsStats } from '../components/schools-stats/schools-stats';
+import { MessageService } from 'primeng/api';
 @NgModule({
   declarations: [Schools],
   imports: [
@@ -31,9 +35,13 @@ import { SchoolsStats } from '../components/schools-stats/schools-stats';
     SplitButtonModule,
     TooltipModule,
     ProgressSpinnerModule,
+    DialogModule,
+    TabsModule,
+    ToastModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([{ path: '', component: Schools }]),
   ],
+  providers: [MessageService],
 })
 export class SchoolsModule {}

@@ -22,3 +22,20 @@ export const schoolEnumMap: SchoolEnumMap = {
   [SchoolStatus.SUSPENDED]: 'Suspended',
   [SchoolStatus.ARCHIVED]: 'Archived',
 };
+export interface CreateSchoolRequest {
+  name: string;
+  headOfficeEmailAddress: string;
+  headOfficeTelephoneNumber: string;
+  website?: string | null;
+  logoUrl?: string | null;
+  province?: string | null;
+}
+
+export interface UpdateSchoolRequest {
+  name: string;
+  headOfficeEmailAddress: string;
+  headOfficeTelephoneNumber: string;
+  website?: string | null;
+  logoUrl?: string | null;
+  province?: string | null;
+}

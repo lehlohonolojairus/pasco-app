@@ -87,27 +87,27 @@
         }
       </td>
       <td>
-        <p-tag [value]="school.statusName" [severity]="getSeverityClass(school.status)">
-        </p-tag>
+        <p-tag [value]="school.statusName" [severity]="getSeverityClass(school.status)"> </p-tag>
       </td>
       <td>
-        <button
+        <p-button
           type="button"
-          pButton
           icon="pi pi-pencil"
-          class="text p-button-sm"
+          class="p-button-text p-button-sm"
           (click)="editSchool(school)"
           pTooltip="Edit school details"
           tooltipPosition="top"
-        ></button>
-        <p-button
-          type="button"
-          icon="pi pi-trash"
-          class="p-button-text p-button-sm"
-          (click)="deleteSchool(school)"
-          pTooltip="Delete school"
-          tooltipPosition="top"
         ></p-button>
+
+          <p-button
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-text p-button-sm"
+            (click)="deleteSchool(school)"
+            pTooltip="Delete school"
+            tooltipPosition="top"
+            [disabled]="school.status != SchoolStatus.SUSPENDED"
+          ></p-button>
       </td>
     </tr>
   </ng-template>

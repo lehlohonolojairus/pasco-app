@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject, signal } from '@angular/core';
-import { delay, finalize, map } from 'rxjs';
-import { Config } from '../../config';
-import { ApplicationState } from '../services/application-state';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { MenuItem, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
-import { MenuItem } from 'primeng/api';
-import { School, schoolEnumMap, SchoolStatus } from './school.model';
+import { ApplicationState } from '../services/application-state';
+import { School, SchoolStatus } from './school.model';
 import { SchoolService } from './school.service';
+import { ConfirmationDialogService } from '../components/confirmation-dialog/confirmation-dialog.service';
 
 @Component({
   selector: 'pasco-schools',
@@ -18,6 +17,8 @@ export class Schools implements OnInit {
   appState = inject(ApplicationState);
   private readonly http = inject(HttpClient);
   private readonly schoolService = inject(SchoolService);
+  private readonly confirmationDialog = inject(ConfirmationDialogService);
+  private readonly messageService = inject(MessageService);
 
   title: string = 'Schools';
   private readonly pageSize = 5;
@@ -77,6 +78,7 @@ export class Schools implements OnInit {
     { label: 'North West', value: 'NORTH_WEST' },
     { label: 'Northern Cape', value: 'NORTHERN_CAPE' },
   ];
+  SchoolStatus = SchoolStatus;
 
   constructor() {
     this.appState.pageTitle.set(this.title);
@@ -114,8 +116,38 @@ export class Schools implements OnInit {
     console.log('Edit School');
   }
 
-  deleteSchool(school: School) {
+  async deleteSchool(school: School) {
     console.log('Delete School');
+    const confirmed = await this.confirmationDialog.open({
+      message: `Are you sure you want to delete ${school.name}?`,
+      icon: 'pi pi-trash',
+      isDeleteAction: true,
+    });
+
+    if (!confirmed) {
+      return;
+    }
+
+    this.schoolService.deleteSchool(school.id).subscribe({
+      next: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Delete School',
+          detail: `${school.name} deleted successfully.`,
+          life: 5000,
+        });
+        this.loadSchools();
+      },
+      error: (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Delete School',
+          detail: `Failed to delete ${school.name}.`,
+          life: 5000,
+        });
+        console.error(`Failed to delete school with ID ${school.id}`, error);
+      },
+    });
   }
 
   viewSchool(school: School) {

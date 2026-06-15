@@ -568,3 +568,10 @@
   background-color: var(--color-status-warning-light) !important;
   color: var(--color-status-warning-alt) !important;
 }
+.pasco-table .p-datatable-tbody .p-splitbutton-button.p-button,
+.pasco-table .p-datatable-tbody .p-button {
+  border: 1px solid var(--color-neutral-300) !important;
+}
+.p-toast-message-success .p-toast-detail {
+  color: var(--color-status-success) !important;
+}

@@ -8,13 +8,14 @@ import { Sidebar } from './components/sidebar/sidebar';
 import { Header } from './components/header/header';
 import { UserProfile } from './components/user-profile/user-profile';
 import { ModalDialogComponent } from './components/modal-dialog/modal-dialog.component';
+import { ConfirmationDialog } from './components/confirmation-dialog/confirmation-dialog';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { TableModule } from 'primeng/table';
 import { PrimeNG, providePrimeNG } from 'primeng/config';
 import { TooltipModule } from 'primeng/tooltip';
 import Aura from '@primeuix/themes/aura';
 @NgModule({
-  declarations: [Layout, Sidebar, Header, UserProfile, ModalDialogComponent],
+  declarations: [Layout, Sidebar, Header, UserProfile, ModalDialogComponent, ConfirmationDialog],
   imports: [
     CommonModule,
     ReactiveFormsModule,

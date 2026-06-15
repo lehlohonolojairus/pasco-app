@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { School, schoolEnumMap } from './school.model';
+import { CreateSchoolRequest, School, schoolEnumMap, UpdateSchoolRequest } from './school.model';
 import { Config } from '../../config';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -22,5 +22,21 @@ export class SchoolService {
           })),
         ),
       );
+  }
+
+  getSchoolById(id: string | number): Observable<School> {
+    return this.http.get<School>(Config.schools.getById(id));
+  }
+
+  createSchool(payload: CreateSchoolRequest): Observable<School> {
+    return this.http.post<School>(Config.schools.create, payload);
+  }
+
+  updateSchool(id: string | number, payload: UpdateSchoolRequest): Observable<School> {
+    return this.http.put<School>(Config.schools.update(id), payload);
+  }
+
+  deleteSchool(id: string | number): Observable<void> {
+    return this.http.delete<void>(Config.schools.delete(id));
   }
 }
