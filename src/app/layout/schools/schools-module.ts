@@ -13,6 +13,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TooltipModule } from 'primeng/tooltip';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { SchoolsStats } from '../components/schools-stats/schools-stats';
 @NgModule({
   declarations: [Schools],
@@ -29,6 +30,7 @@ import { SchoolsStats } from '../components/schools-stats/schools-stats';
     ToolbarModule,
     SplitButtonModule,
     TooltipModule,
+    ProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([{ path: '', component: Schools }]),

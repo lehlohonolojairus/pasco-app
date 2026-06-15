@@ -7,10 +7,18 @@ export interface School {
   headOfficeTelephoneNumber: string;
   headOfficeFaxNumber: string;
   status: SchoolStatus,
+  statusName: string
 }
 export enum SchoolStatus {
-  ACTIVE = 'ACTIVE',
-  PENDING = 'PENDING',
-  SUSPENDED = 'SUSPENDED',
-  ARCHIVED = 'ARCHIVED',
+  ACTIVE = 1,
+  PENDING = 2,
+  SUSPENDED = 3,
+  ARCHIVED = 4,
 }
+export type SchoolEnumMap = Record<SchoolStatus, string>;
+export const schoolEnumMap: SchoolEnumMap = {
+  [SchoolStatus.ACTIVE]: 'Active',
+  [SchoolStatus.PENDING]: 'Pending',
+  [SchoolStatus.SUSPENDED]: 'Suspended',
+  [SchoolStatus.ARCHIVED]: 'Archived',
+};
