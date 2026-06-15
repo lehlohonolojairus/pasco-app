@@ -1,17 +1,20 @@
-import { Component, HostListener, inject } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { CreateSchoolDialogService } from './create-school-dialog.service';
+import { CommonModule } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ModalDialogService } from '../modal-dialog/modal-dialog.service';
 import { CreateSchoolRequest } from '../../schools/school.model';
 
 @Component({
   selector: 'pasco-create-school-dialog',
   templateUrl: './create-school-dialog.html',
   styleUrls: ['./create-school-dialog.scss'],
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
 })
 export class CreateSchoolDialog {
   private readonly fb = inject(FormBuilder);
-  readonly dialog = inject(CreateSchoolDialogService);
+  private readonly modalService = inject(ModalDialogService);
 
   readonly form = this.fb.group({
     name: ['', Validators.required],
@@ -21,54 +24,32 @@ export class CreateSchoolDialog {
     logoUrl: [''],
   });
 
-  @HostListener('document:keydown.escape')
-  onEscape(): void {
-    if (this.dialog.isOpen()) {
-      this.cancel();
-    }
-  }
+  constructor() {
+    this.modalService.setFormValid(this.form.valid);
 
-  onBackdropClick(event: MouseEvent): void {
-    if (event.target === event.currentTarget) {
-      this.cancel();
-    }
-  }
-
-  cancel(): void {
-    this.form.reset({
-      name: '',
-      headOfficeEmailAddress: '',
-      headOfficeTelephoneNumber: '',
-      website: '',
-      logoUrl: '',
+    this.form.statusChanges.pipe(takeUntilDestroyed()).subscribe(() => {
+      this.modalService.setFormValid(this.form.valid);
     });
-    this.dialog.cancel();
   }
 
-  submit(): void {
+  markAllAsTouched(): void {
+    this.form.markAllAsTouched();
+    this.modalService.setFormValid(this.form.valid);
+  }
+
+  public getPayload(): CreateSchoolRequest | null {
     if (this.form.invalid) {
-      this.form.markAllAsTouched();
-      return;
+      return null;
     }
 
     const value = this.form.getRawValue();
 
-    const payload: CreateSchoolRequest = {
+    return {
       name: value.name ?? '',
       headOfficeEmailAddress: value.headOfficeEmailAddress ?? '',
       headOfficeTelephoneNumber: value.headOfficeTelephoneNumber ?? '',
       website: value.website || null,
       logoUrl: value.logoUrl || null,
     };
-
-    this.form.reset({
-      name: '',
-      headOfficeEmailAddress: '',
-      headOfficeTelephoneNumber: '',
-      website: '',
-      logoUrl: '',
-    });
-
-    this.dialog.submit(payload);
   }
 }

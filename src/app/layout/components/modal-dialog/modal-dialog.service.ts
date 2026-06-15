@@ -6,7 +6,8 @@ export interface ModalConfig {
   hideSaveButton?: boolean;
   cancelButtonText?: string;
   component: Type<any>;
-  onSave: (event: any) => void;
+  onSave?: (event: any) => void;
+  done?: () => void;
 }
 
 @Injectable({

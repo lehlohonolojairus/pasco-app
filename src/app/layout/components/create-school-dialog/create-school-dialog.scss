@@ -1,5 +1,65 @@
 :host {
-  display: contents;
+  display: block;
+}
+
+.create-school-form {
+  width: 100%;
+}
+
+.create-school-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.create-school-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.create-school-field-full {
+  grid-column: 1 / -1;
+}
+
+.create-school-field label {
+  color: var(--pasco-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.create-school-input {
+  display: block;
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.625rem 0.75rem;
+  box-sizing: border-box;
+  border: 1px solid #d1d5db;
+  border-radius: var(--radius-btn);
+  background: #fff;
+  color: #111827;
+  font-size: 0.95rem;
+  line-height: 1.25rem;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.create-school-input:focus {
+  border-color: var(--pasco-primary);
+  box-shadow: 0 0 0 3px rgba(76, 45, 145, 0.12);
+}
+
+.create-school-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%236b7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
 }
 
 .create-school-dialog-backdrop {
@@ -56,78 +116,6 @@
 
 .create-school-dialog-body {
   padding: 1.5rem;
-}
-
-.create-school-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.create-school-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.375rem;
-}
-
-.create-school-field label {
-  display: block;
-  margin-bottom: 0.25rem;
-  color: var(--pasco-text);
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.create-school-input,
-.create-school-select {
-  display: block;
-  width: 100%;
-  min-height: 2.75rem;
-  padding: 0.625rem 0.75rem;
-  box-sizing: border-box;
-  border: 1px solid #d1d5db;
-  border-radius: var(--radius-btn);
-  background-color: #ffffff;
-  color: #111827;
-  font-size: 0.95rem;
-  line-height: 1.25rem;
-  outline: none;
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.create-school-input::placeholder {
-  color: #9ca3af;
-}
-
-.create-school-input:focus,
-.create-school-select:focus {
-  border-color: var(--pasco-primary);
-  box-shadow: 0 0 0 3px rgba(76, 45, 145, 0.12);
-}
-
-.create-school-input:disabled,
-.create-school-select:disabled {
-  background-color: #f9fafb;
-  cursor: not-allowed;
-}
-
-.create-school-select {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  padding-right: 2.5rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 7.5L10 12.5L15 7.5' stroke='%236b7280' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  background-size: 1rem;
-}
-
-.field-error {
-  color: #dc2626;
-  font-size: 0.8rem;
 }
 
 .create-school-dialog-footer {

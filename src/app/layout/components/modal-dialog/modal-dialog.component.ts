@@ -42,7 +42,7 @@ export class ModalDialogComponent {
     if (instance && typeof instance.submit === 'function') {
       instance.submit();
     } else {
-      this.modalService.config()?.onSave(event);
+      this.modalService.config()?.onSave!(instance);
       this.modalService.close();
     }
   }

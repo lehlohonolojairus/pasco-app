@@ -1,27 +1,26 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Schools } from './schools';
-import { RouterModule } from '@angular/router';
-import { TableModule } from 'primeng/table';
-import { Select, SelectModule } from 'primeng/select';
-import { ProgressBarModule } from 'primeng/progressbar';
-import { TagModule } from 'primeng/tag';
-import { ButtonModule } from 'primeng/button';
-import { InputIconModule } from 'primeng/inputicon';
-import { IconFieldModule } from 'primeng/iconfield';
-import { ToolbarModule } from 'primeng/toolbar';
-import { SplitButtonModule } from 'primeng/splitbutton';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TooltipModule } from 'primeng/tooltip';
-import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { DialogModule } from 'primeng/dialog';
-import { TabsModule } from 'primeng/tabs';
-import { ToastModule } from 'primeng/toast';
-import { SchoolsStats } from '../components/schools-stats/schools-stats';
+import { RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { CreateSchoolDialog } from '../components/create-school-dialog/create-school-dialog';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { SelectModule } from 'primeng/select';
+import { SplitButtonModule } from 'primeng/splitbutton';
+import { TableModule } from 'primeng/table';
+import { TabsModule } from 'primeng/tabs';
+import { TagModule } from 'primeng/tag';
+import { ToastModule } from 'primeng/toast';
+import { ToolbarModule } from 'primeng/toolbar';
+import { TooltipModule } from 'primeng/tooltip';
+import { SchoolsStats } from '../components/schools-stats/schools-stats';
+import { Schools } from './schools';
 @NgModule({
-  declarations: [Schools, CreateSchoolDialog],
+  declarations: [Schools],
   imports: [
     SchoolsStats,
     CommonModule,
