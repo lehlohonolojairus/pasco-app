@@ -19,8 +19,9 @@ import { TabsModule } from 'primeng/tabs';
 import { ToastModule } from 'primeng/toast';
 import { SchoolsStats } from '../components/schools-stats/schools-stats';
 import { MessageService } from 'primeng/api';
+import { CreateSchoolDialog } from '../components/create-school-dialog/create-school-dialog';
 @NgModule({
-  declarations: [Schools],
+  declarations: [Schools, CreateSchoolDialog],
   imports: [
     SchoolsStats,
     CommonModule,
